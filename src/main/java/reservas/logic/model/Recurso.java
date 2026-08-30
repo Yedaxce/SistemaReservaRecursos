@@ -32,6 +32,10 @@ public class Recurso {
         return descripcion;
     }
 
+    public CategoriaRecurso getCategoria() {
+        return categoria;
+    }
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
