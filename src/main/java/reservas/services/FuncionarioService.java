@@ -2,7 +2,7 @@ package reservas.services;
 
 import reservas.dao.FuncionarioDAO;
 import reservas.dao.UsuarioDAO;
-import reservas.logic.model.Funcionario;
+import reservas.logic.Funcionario;
 
 import java.util.List;
 

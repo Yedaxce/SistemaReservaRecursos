@@ -3,7 +3,7 @@ package reservas.services;
 import reservas.dao.FuncionarioDAO;
 import reservas.dao.RecursoDAO;
 import reservas.dao.ReservaDAO;
-import reservas.logic.model.*;
+import reservas.logic.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
