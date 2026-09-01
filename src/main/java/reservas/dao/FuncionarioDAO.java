@@ -24,7 +24,6 @@ public class FuncionarioDAO {
     public List<Funcionario> buscarPorNombre(String nombre) {
         List<Funcionario> resultado = new ArrayList<>();
         if (nombre == null) return resultado;
-
         for (Funcionario f : listarTodos()) {
             if (f.getNombre() != null && f.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
                 resultado.add(f);
@@ -43,11 +42,11 @@ public class FuncionarioDAO {
         return funcionarios;
     }
 
-    public void guardar(Funcionario funcionario) {
+    public void actualizar(Funcionario funcionario) {
         usuarioDAO.guardar(funcionario);
     }
 
-    public void actualizar(Funcionario funcionario) {
+    public void guardar(Funcionario funcionario) {
         usuarioDAO.guardar(funcionario);
     }
 
