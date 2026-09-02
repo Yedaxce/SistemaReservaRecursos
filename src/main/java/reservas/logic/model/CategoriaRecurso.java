@@ -1,4 +1,4 @@
-package reservas.logic;
+package reservas.logic.model;
 import java.util.Objects;
 
 /*agrupa los recurso del mismo tipo*/

@@ -1,4 +1,4 @@
-package reservas.logic;
+package reservas.logic.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

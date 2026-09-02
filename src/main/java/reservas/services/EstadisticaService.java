@@ -1,9 +1,9 @@
 package reservas.services;
 
 import reservas.dao.ReservaDAO;
-import reservas.logic.CategoriaRecurso;
-import reservas.logic.Recurso;
-import reservas.logic.Reserva;
+import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.model.Recurso;
+import reservas.logic.model.Reserva;
 
 import java.time.LocalDate;
 import java.util.HashMap;

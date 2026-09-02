@@ -1,7 +1,7 @@
 package reservas.services;
 
 import reservas.dao.CategoriaRecursoDAO;
-import reservas.logic.CategoriaRecurso;
+import reservas.logic.model.CategoriaRecurso;
 
 import java.util.List;
 

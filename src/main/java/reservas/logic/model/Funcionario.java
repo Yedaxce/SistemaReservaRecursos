@@ -1,4 +1,4 @@
-package reservas.logic;
+package reservas.logic.model;
 
 public class Funcionario extends Usuario {
 

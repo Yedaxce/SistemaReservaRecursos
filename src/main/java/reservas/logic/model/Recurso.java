@@ -1,4 +1,4 @@
-package reservas.logic;
+package reservas.logic.model;
 
 //un recurso concreto es reservable e individual
 //es responsabilidad de ReservaService saber si un recurso está disponible o no
