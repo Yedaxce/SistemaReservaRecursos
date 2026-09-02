@@ -1,9 +1,15 @@
 package reservas.logic.model;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlID;
+
 import java.util.Objects;
 
 /*agrupa los recurso del mismo tipo*/
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CategoriaRecurso {
+    @XmlID
     private final String id;
     private String descripcion;
 

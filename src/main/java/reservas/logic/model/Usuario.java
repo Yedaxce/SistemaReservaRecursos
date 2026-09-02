@@ -1,7 +1,11 @@
 package reservas.logic.model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Usuario {
 
     private final String id;
