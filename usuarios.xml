@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<usuarios>
+    <usuario>
+        <id>admin</id>
+        <clave>1234</clave>
+        <rol>ADMIN</rol>
+    </usuario>
+    <usuario>
+        <id>admin</id>
+        <clave>1234</clave>
+        <rol>ADMIN</rol>
+    </usuario>
+    <usuario>
+        <id>111</id>
+        <clave>jp-111</clave>
+        <rol>FUNCIONARIO</rol>
+        <nombre>Juan Pérez</nombre>
+        <telefono>8888-1234</telefono>
+    </usuario>
+    <usuario>
+        <id>222</id>
+        <clave>mt-222</clave>
+        <rol>FUNCIONARIO</rol>
+        <nombre>Maria Torres</nombre>
+        <telefono>8888-1234</telefono>
+    </usuario>
+</usuarios>

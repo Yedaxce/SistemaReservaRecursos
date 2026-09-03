@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<recursos>
+    <recurso>
+        <id>REC-001</id>
+        <descripcion>Sala de reuniones A</descripcion>
+        <categoriaId>CAT-000001</categoriaId>
+    </recurso>
+    <recurso>
+        <id>REC-002</id>
+        <descripcion>Sala de reuniones B</descripcion>
+        <categoriaId>CAT-000001</categoriaId>
+    </recurso>
+    <recurso>
+        <id>REC-003</id>
+        <descripcion>Proyector Epson</descripcion>
+        <categoriaId>CAT-000002</categoriaId>
+    </recurso>
+    <recurso>
+        <id>REC-004</id>
+        <descripcion>Cámara Canon EOS</descripcion>
+        <categoriaId>CAT-000002</categoriaId>
+    </recurso>
+    <recurso>
+        <id>REC-005</id>
+        <descripcion>Laptop HP Probook Win11</descripcion>
+        <categoriaId>CAT-000003</categoriaId>
+    </recurso>
+</recursos>
+
