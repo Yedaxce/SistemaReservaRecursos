@@ -1,7 +1,7 @@
 package reservas.presentation.recursosP;
 
-import reservas.logic.CategoriaRecurso;
-import reservas.logic.Recurso;
+import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.model.Recurso;
 
 import javax.swing.*;
 import java.beans.PropertyChangeListener;

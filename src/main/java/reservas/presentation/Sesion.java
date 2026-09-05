@@ -1,6 +1,6 @@
 package reservas.presentation;
 
-import reservas.logic.Usuario;
+import reservas.logic.model.Usuario;
 
 public class Sesion {
     private static Usuario usuario;

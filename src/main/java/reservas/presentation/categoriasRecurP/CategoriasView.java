@@ -1,6 +1,6 @@
 package reservas.presentation.categoriasRecurP;
 
-import reservas.logic.CategoriaRecurso;
+import reservas.logic.model.CategoriaRecurso;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

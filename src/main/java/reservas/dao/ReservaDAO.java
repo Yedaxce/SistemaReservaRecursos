@@ -1,9 +1,9 @@
 package reservas.dao;
 
-import reservas.logic.EstadoReserva;
-import reservas.logic.Funcionario;
-import reservas.logic.Recurso;
-import reservas.logic.Reserva;
+import reservas.logic.model.EstadoReserva;
+import reservas.logic.model.Funcionario;
+import reservas.logic.model.Recurso;
+import reservas.logic.model.Reserva;
 
 import org.w3c.dom.*;
 import javax.xml.parsers.*;

@@ -6,11 +6,6 @@
         <rol>ADMIN</rol>
     </usuario>
     <usuario>
-        <id>admin</id>
-        <clave>1234</clave>
-        <rol>ADMIN</rol>
-    </usuario>
-    <usuario>
         <id>111</id>
         <clave>jp-111</clave>
         <rol>FUNCIONARIO</rol>

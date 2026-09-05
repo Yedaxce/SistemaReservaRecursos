@@ -1,7 +1,7 @@
 package reservas.services;
 
 import reservas.dao.UsuarioDAO;
-import reservas.logic.Usuario;
+import reservas.logic.model.Usuario;
 
 public class UsuarioService {
     private final UsuarioDAO usuarioDAO;

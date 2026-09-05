@@ -1,7 +1,7 @@
 package reservas.services;
 
-import reservas.logic.CategoriaRecurso;
-import reservas.logic.Reserva;
+import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.model.Reserva;
 
 import java.util.List;
 

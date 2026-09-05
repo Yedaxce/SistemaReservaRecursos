@@ -1,6 +1,6 @@
 package reservas.presentation.funcionarioP;
 
-import reservas.logic.Funcionario;
+import reservas.logic.model.Funcionario;
 import reservas.services.FuncionarioService;
 
 public class FuncionarioController {

@@ -1,6 +1,6 @@
 package reservas.presentation.funcionarioP;
 
-import reservas.logic.Funcionario;
+import reservas.logic.model.Funcionario;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
