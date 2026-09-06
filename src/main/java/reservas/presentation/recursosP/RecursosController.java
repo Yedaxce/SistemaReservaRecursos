@@ -67,14 +67,16 @@ public class RecursosController {
 
 
     public void buscar(String descripcion, CategoriaRecurso categoria) {
-        List<Recurso> base = service.listarPorCategoria(categoria.getId());
-
+        if (categoria == null) {
+            // Defensivo: solo pasaría si aún no hay ninguna categoría cargada.
+            model.setLista(new ArrayList<>());
+            return;
+        }
         if (descripcion == null || descripcion.isBlank()) {
-            model.setLista(base);
+            model.setLista(service.listarPorCategoria(categoria.getId()));
         } else {
-            String texto = descripcion.toLowerCase();
-            model.setLista(base.stream()
-                    .filter(r -> r.getDescripcion().toLowerCase().contains(texto))
+            model.setLista(service.buscarPorDescripcion(descripcion).stream()
+                    .filter(r -> r.getCategoria().getId().equals(categoria.getId()))
                     .toList());
         }
     }

@@ -19,6 +19,10 @@ public class RecursoService {
         return recursoDAO.buscarPorId(id);
     }
 
+    public List<Recurso> buscarPorDescripcion(String descripcion) {
+        return recursoDAO.buscarPorDescripcion(descripcion);
+    }
+
     public List<Recurso> listarPorCategoria(String idCategoria) {
         return recursoDAO.listarPorCategoria(idCategoria);
     }

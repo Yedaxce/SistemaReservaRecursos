@@ -32,6 +32,17 @@ public class RecursoDAO {
         return null;
     }
 
+    public List<Recurso> buscarPorDescripcion(String descripcion) {
+        List<Recurso> res = new ArrayList<>();
+        if (descripcion == null) return res;
+        for (Recurso r : listarTodos()) {
+            if (r.getDescripcion().toLowerCase().contains(descripcion.toLowerCase())) {
+                res.add(r);
+            }
+        }
+        return res;
+    }
+
     public List<Recurso> listarPorCategoria(String idCategoria) {
         List<Recurso> res = new ArrayList<>();
         if (idCategoria == null) return res;
