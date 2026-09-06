@@ -58,4 +58,7 @@ public class FuncionarioController {
             model.setLista(service.buscarPorNombre(nombre));
         }
     }
+
+    /**Generar un reporte PDF*/
+
 }

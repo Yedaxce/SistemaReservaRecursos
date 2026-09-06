@@ -4,8 +4,11 @@ import reservas.logic.model.CategoriaRecurso;
 import reservas.logic.model.Recurso;
 import reservas.services.CategoriaRecursoService;
 import reservas.services.RecursoService;
+import reservas.services.GenerarPdfService;
 
 import java.util.List;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class RecursosController {
 
@@ -13,12 +16,14 @@ public class RecursosController {
     private final RecursosModel model;
     private final RecursoService service;
     private final CategoriaRecursoService categoriaService;
+    private final GenerarPdfService pdfService;
 
     public RecursosController(RecursosView view, RecursosModel model) {
         this.view = view;
         this.model = model;
         this.service = new RecursoService();
         this.categoriaService = new CategoriaRecursoService();
+        this.pdfService = new GenerarPdfService();
         view.setController(this);
         view.setModel(model);
         model.setCategorias(categoriaService.listarTodos()); // llena los combos
@@ -74,4 +79,12 @@ public class RecursosController {
         }
     }
 
+    /** Genera el PDF con la lista de Recursos actualmente cargada en el Model. */
+    public void imprimir(String rutaSalida) throws IOException {
+        String[] encabezados = {"Id", "Descripción", "Categoría"};
+        List<Object[]> filas = model.getLista().stream()
+                .map(r -> new Object[]{r.getId(), r.getDescripcion(), r.getCategoria().getDescripcion()})
+                .toList();
+        pdfService.generarPdf("Listado de Recursos", encabezados, filas, rutaSalida);
+    }
 }

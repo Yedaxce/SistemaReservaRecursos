@@ -3,63 +3,49 @@ package reservas.services;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.UnitValue;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+
+/**
+ * Servicio genérico de generación de reportes en PDF.
+ * No conoce Recurso, CategoriaRecurso ni ninguna otra clase de dominio --
+ * cada Controller le arma sus propios encabezados y filas ya convertidas
+ * a texto. Así, agregar un reporte nuevo (Funcionarios, Reservas...) nunca
+ * requiere tocar esta clase.
+ */
 
 public class GenerarPdfService {
 
+
     public void generarPdf(String titulo, String[] encabezados, List<Object[]> filas, String ruta) throws IOException {
-        // 1. Inicializar el escritor y el documento PDF
-        PdfWriter writer = new PdfWriter(new FileOutputStream(ruta));
-        PdfDocument pdf = new PdfDocument(writer);
-        Document documento = new Document(pdf);
+        try (PdfWriter writer = new PdfWriter(ruta);
+             PdfDocument pdfDoc = new PdfDocument(writer);
+             Document document = new Document(pdfDoc)) {
 
-        try {
-            // 2. Agregar el Título del reporte
-            Paragraph pTitulo = new Paragraph(titulo)
-                    .setFontSize(18)
-                    .setBold()
-                    .setTextAlignment(TextAlignment.CENTER)
-                    .setMarginBottom(20);
-            documento.add(pTitulo);
+            document.add(new Paragraph(titulo).setBold().setFontSize(16));
 
-            // 3. Crear la tabla dinámicamente según el número de encabezados
-            int numColumnas = encabezados.length;
-            Table tabla = new Table(UnitValue.createPercentArray(numColumnas)).useAllAvailableWidth();
+            float[] anchos = new float[encabezados.length];
+            Arrays.fill(anchos, 1f); // todas las columnas con el mismo ancho relativo
+            Table tabla = new Table(UnitValue.createPercentArray(anchos)).useAllAvailableWidth();
 
-            // 4. Agregar los Encabezados a la tabla
             for (String encabezado : encabezados) {
-                Cell celdaEncabezado = new Cell()
-                        .add(new Paragraph(encabezado).setBold())
-                        .setTextAlignment(TextAlignment.CENTER);
-                tabla.addHeaderCell(celdaEncabezado);
+                tabla.addHeaderCell(new Cell().add(new Paragraph(encabezado).setBold()));
             }
 
-            // 5. Agregar las Filas de datos de forma genérica
             for (Object[] fila : filas) {
-                for (Object celda : fila) {
-                    // Si el objeto es nulo, inserta un texto vacío para evitar errores
-                    String textoCelda = (celda != null) ? celda.toString() : "";
-                    tabla.addCell(new Cell().add(new Paragraph(textoCelda)));
+                for (Object valor : fila) {
+                    tabla.addCell(new Cell().add(new Paragraph(valor == null ? "" : valor.toString())));
                 }
             }
 
-            // 6. Añadir la tabla al documento
-            documento.add(tabla);
-
-        } finally {
-            // 7. Cerrar el documento de forma segura
-            documento.close();
+            document.add(tabla);
         }
     }
 
-
 }
-

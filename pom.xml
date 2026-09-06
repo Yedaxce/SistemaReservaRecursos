@@ -35,7 +35,7 @@
             <version>1.5.3</version>
         </dependency>
 
-        <!-- Dependencia base de iText 7 Core -->
+        <!-- Dependencia base de iText 7 Core para PDF -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itext7-core</artifactId>

@@ -25,5 +25,9 @@
         <descripcion>Laptop HP Probook Win11</descripcion>
         <categoriaId>CAT-000003</categoriaId>
     </recurso>
+    <recurso>
+        <id>REC-006</id>
+        <descripcion>Laptop Asus</descripcion>
+        <categoriaId>CAT-000003</categoriaId>
+    </recurso>
 </recursos>
-
