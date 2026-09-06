@@ -1,10 +1,12 @@
 package reservas.presentation.categoriasRecurP;
 
-import reservas.logic.CategoriaRecurso;
+import reservas.logic.model.CategoriaRecurso;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 
 public class CategoriasView implements PropertyChangeListener {
     private JPanel panelPrincipalCategorias;
@@ -29,9 +31,7 @@ public class CategoriasView implements PropertyChangeListener {
     private void registrarEventos() {
         buscarBtn.addActionListener(e -> controller.buscar(descripcionFld.getText().trim()));
 
-        // implementar impresión a PDF con iText7 (ver pom.xml),
-        // igual que en Recursos. Queda sin acción por ahora.
-        // imprimirBtn.addActionListener(e -> {});
+        imprimirBtn.addActionListener(e -> onImprimir());
 
         guardarBtn.addActionListener(e -> onGuardar());
 
@@ -78,6 +78,26 @@ public class CategoriasView implements PropertyChangeListener {
         }
     }
 
+    private void onImprimir() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setSelectedFile(new File("categorias.pdf"));
+        int resultado = chooser.showSaveDialog(panelPrincipalCategorias);
+        if (resultado != JFileChooser.APPROVE_OPTION) {
+            return; // el usuario canceló el diálogo
+        }
+        try {
+            String ruta = chooser.getSelectedFile().getAbsolutePath();
+            if (!ruta.toLowerCase().endsWith(".pdf")) {
+                ruta += ".pdf";
+            }
+            controller.imprimir(ruta);
+            JOptionPane.showMessageDialog(panelPrincipalCategorias, "PDF generado correctamente en:\n" + ruta);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(panelPrincipalCategorias,
+                    "No se pudo generar el PDF: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public void setController(CategoriasController controller) {
         this.controller = controller;
     }
@@ -87,8 +107,8 @@ public class CategoriasView implements PropertyChangeListener {
         model.addPropertyChangeListener(this);
     }
 
-    // ⚠ Necesario para insertar esta Vista en el JTabbedPane desde Application.java
-    // (ej. tabbedPane.addTab("Categorías", categoriasView.getPanel())).
+    // Necesario para insertar esta Vista en el JTabbedPane desde Application
+    // (tabbedPane.addTab("Categorías", categoriasView.getPanel())).
     public JPanel getPanel() {
         return panelPrincipalCategorias;
     }

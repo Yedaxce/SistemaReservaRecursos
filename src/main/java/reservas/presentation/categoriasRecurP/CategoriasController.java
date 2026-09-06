@@ -1,13 +1,18 @@
 package reservas.presentation.categoriasRecurP;
 
-import reservas.logic.CategoriaRecurso;
+import reservas.logic.model.CategoriaRecurso;
 import reservas.services.CategoriaRecursoService;
+import reservas.services.GenerarPdfService;
+
+import java.io.IOException;
+import java.util.List;
 
 public class CategoriasController {
 
     private final CategoriasView view;
     private final CategoriasModel model;
     private final CategoriaRecursoService service;
+    private final GenerarPdfService pdfService;
 
     public CategoriasController(CategoriasView view, CategoriasModel model) {
         this.view = view;
@@ -16,6 +21,7 @@ public class CategoriasController {
         view.setController(this);
         view.setModel(model);
         model.setLista(service.listarTodos());
+        this.pdfService = new GenerarPdfService();
     }
 
     // ID generado por Service (categoriaDAO.generarNuevoId())
@@ -55,5 +61,15 @@ public class CategoriasController {
             model.setLista(service.buscarPorDescripcion(descripcion));
         }
     }
+
+    /** Genera el PDF con la lista de Categorías actualmente cargada en el Model. */
+    public void imprimir(String rutaSalida) throws IOException {
+        String[] encabezados = {"Id", "Descripción"};
+        List<Object[]> filas = model.getLista().stream()
+                .map(c -> new Object[]{c.getId(), c.getDescripcion()})
+                .toList();
+        pdfService.generarPdf("Listado de Categorías", encabezados, filas, rutaSalida);
+    }
+
 }
 

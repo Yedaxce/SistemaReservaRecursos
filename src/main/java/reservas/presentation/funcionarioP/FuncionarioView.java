@@ -1,10 +1,12 @@
 package reservas.presentation.funcionarioP;
 
-import reservas.logic.Funcionario;
+import reservas.logic.model.Funcionario;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 
 public class FuncionarioView implements PropertyChangeListener {
 
@@ -42,6 +44,8 @@ public class FuncionarioView implements PropertyChangeListener {
         borrarBtn.addActionListener(e -> onBorrar());
 
         limpiarBtn.addActionListener(e -> controller.limpiar());
+
+        imprimirBtn.addActionListener(e->onImprimir());
 
         tablaFuncionarios.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && tablaFuncionarios.getSelectedRow() != -1) {
@@ -85,6 +89,25 @@ public class FuncionarioView implements PropertyChangeListener {
         }
     }
 
+    private void onImprimir() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setSelectedFile(new File("funcionarios.pdf"));
+        int resultado = chooser.showSaveDialog(panelPrincipalFuncionarios);
+        if (resultado != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
+        try {
+            String ruta = chooser.getSelectedFile().getAbsolutePath();
+            if (!ruta.toLowerCase().endsWith(".pdf")) {
+                ruta += ".pdf";
+            }
+            controller.imprimir(ruta);
+            JOptionPane.showMessageDialog(panelPrincipalFuncionarios, "PDF generado correctamente en:\n" + ruta);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(panelPrincipalFuncionarios,
+                    "No se pudo generar el PDF: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     public void setController(FuncionarioController controller) {
         this.controller = controller;
     }

@@ -1,9 +1,11 @@
 package reservas.presentation.recursosP;
 
-import reservas.logic.CategoriaRecurso;
-import reservas.logic.Recurso;
+import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.model.Recurso;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 import java.beans.PropertyChangeListener;
 import java.awt.print.PrinterException;
 import java.beans.PropertyChangeEvent;
@@ -41,18 +43,7 @@ public class RecursosView implements PropertyChangeListener {
             controller.buscar(descripcionRecursoFld.getText().trim(), cat);
         });
 
-        // IMPLEMETAR Imprimir a PDF con iText7 (la libreria ya esta en pom.xml)
-       /* imprimirButton.addActionListener(e -> {
-        *    try {
-        *        //codigo para imprimir
-        *    } catch (PrinterException ex) {
-        *        JOptionPane.showMessageDialog(JPPrincipalRecursos,
-        *                "No se pudo imprimir: " + ex.getMessage(),
-        *                "Error", JOptionPane.ERROR_MESSAGE);
-        *    }
-        });
-
-        */
+        imprimirButton.addActionListener(e -> onImprimir());
 
         guardarButton.addActionListener(e -> onGuardar());
 
@@ -104,6 +95,26 @@ public class RecursosView implements PropertyChangeListener {
         }
     }
 
+    private void onImprimir() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setSelectedFile(new File("recursos.pdf"));
+        int resultado = chooser.showSaveDialog(JPPrincipalRecursos);
+        if (resultado != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
+        try {
+            String ruta = chooser.getSelectedFile().getAbsolutePath();
+            if (!ruta.toLowerCase().endsWith(".pdf")) {
+                ruta += ".pdf";
+            }
+            controller.imprimir(ruta);
+            JOptionPane.showMessageDialog(JPPrincipalRecursos, "PDF generado correctamente en:\n" + ruta);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(JPPrincipalRecursos,
+                    "No se pudo generar el PDF: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public void setController(RecursosController controller) {
         this.controller = controller;
     }
@@ -127,9 +138,6 @@ public class RecursosView implements PropertyChangeListener {
             break;
         }
             case RecursosModel.CATEGORIAS: {
-                // Sin opción "Todas": ambos combos solo listan categorías reales.
-                // Si no hay ninguna categoría creada todavía, los combos quedan vacíos
-                // (recuerda crear al menos una categoría antes de probar este módulo).
                 DefaultComboBoxModel<CategoriaRecurso> modeloFiltro = new DefaultComboBoxModel<>();
                 DefaultComboBoxModel<CategoriaRecurso> modeloForm = new DefaultComboBoxModel<>();
                 for (CategoriaRecurso c : model.getCategorias()) {

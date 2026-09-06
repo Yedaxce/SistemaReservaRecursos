@@ -1,6 +1,6 @@
 package reservas.presentation.categoriasRecurP;
 
-import reservas.logic.CategoriaRecurso;
+import reservas.logic.model.CategoriaRecurso;
 import reservas.presentation.AbstractTableModel;
 
 import java.util.List;

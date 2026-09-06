@@ -1,17 +1,23 @@
 package reservas.presentation.funcionarioP;
 
-import reservas.logic.Funcionario;
+import reservas.logic.model.Funcionario;
 import reservas.services.FuncionarioService;
+import reservas.services.GenerarPdfService;
+
+import java.io.IOException;
+import java.util.List;
 
 public class FuncionarioController {
     private final FuncionarioView view;
     private final FuncionarioModel model;
     private final FuncionarioService service;
+    private final GenerarPdfService pdfService;
 
     public FuncionarioController(FuncionarioView view, FuncionarioModel model) {
         this.view = view;
         this.model = model;
         this.service = new FuncionarioService();
+        this.pdfService = new GenerarPdfService();
         view.setController(this);
         view.setModel(model);          // aquí la View se suscribe como observador
         model.setLista(service.listarTodos()); // carga inicial de la tabla
@@ -58,4 +64,14 @@ public class FuncionarioController {
             model.setLista(service.buscarPorNombre(nombre));
         }
     }
+
+    /**Generar un reporte PDF*/
+    public void imprimir(String ruta) throws IOException {
+        String[] encabezados = {"Id", "Nombre", "Teléfono"};
+        List<Object[]> filas = model.getLista().stream()
+                .map(c -> new Object[]{c.getId(), c.getNombre(), c.getTelefono()})
+                .toList();
+        pdfService.generarPdf("Listado de Categorías", encabezados, filas, ruta);
+    }
+
 }

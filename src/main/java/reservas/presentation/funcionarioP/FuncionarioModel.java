@@ -1,6 +1,6 @@
 package reservas.presentation.funcionarioP;
 
-import reservas.logic.Funcionario;
+import reservas.logic.model.Funcionario;
 import reservas.presentation.AbstractModel;
 import java.util.ArrayList;
 import java.util.List;

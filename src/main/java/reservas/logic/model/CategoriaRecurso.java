@@ -7,6 +7,7 @@ import java.util.Objects;
 
 /*agrupa los recurso del mismo tipo*/
 
+public class CategoriaRecurso {
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CategoriaRecurso {
     @XmlID

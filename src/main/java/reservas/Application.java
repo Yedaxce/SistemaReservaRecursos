@@ -1,6 +1,6 @@
 package reservas;
 
-import reservas.logic.Administrador;
+import reservas.logic.model.Administrador;
 import reservas.presentation.Sesion;
 import reservas.presentation.categoriasRecurP.CategoriasController;
 import reservas.presentation.categoriasRecurP.CategoriasModel;
@@ -9,7 +9,7 @@ import reservas.presentation.login.LoginController;
 import reservas.presentation.login.LoginModel;
 import reservas.presentation.login.LoginView;
 
-import reservas.logic.Funcionario;
+import reservas.logic.model.Funcionario;
 import reservas.presentation.funcionarioP.FuncionarioController;
 import reservas.presentation.funcionarioP.FuncionarioModel;
 import reservas.presentation.funcionarioP.FuncionarioView;

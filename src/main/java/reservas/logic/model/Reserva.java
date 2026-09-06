@@ -9,6 +9,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+public class Reserva {
+    private final String id;
+    private String actividad;
+    private LocalDate fecha;
+    private LocalTime horaInicio;
+    private LocalTime horaFin;
+    private final Funcionario funcionario;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import reservas.dao.LocalDateAdapter;
 import reservas.dao.LocalTimeAdapter;

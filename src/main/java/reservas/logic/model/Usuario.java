@@ -1,5 +1,7 @@
 package reservas.logic.model;
 
+import java.util.Objects;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 

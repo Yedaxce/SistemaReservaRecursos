@@ -1,5 +1,16 @@
 package reservas.dao;
 
+import reservas.logic.model.EstadoReserva;
+import reservas.logic.model.Funcionario;
+import reservas.logic.model.Recurso;
+import reservas.logic.model.Reserva;
+
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
 import reservas.logic.model.Reserva;
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,5 +1,14 @@
 package reservas.dao;
 
+import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.model.Recurso;
+
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
 import reservas.logic.model.Recurso;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +23,17 @@ public class RecursoDAO {
             if (r.getId().equalsIgnoreCase(id)) return r;
         }
         return null;
+    }
+
+    public List<Recurso> buscarPorDescripcion(String descripcion) {
+        List<Recurso> res = new ArrayList<>();
+        if (descripcion == null) return res;
+        for (Recurso r : listarTodos()) {
+            if (r.getDescripcion().toLowerCase().contains(descripcion.toLowerCase())) {
+                res.add(r);
+            }
+        }
+        return res;
     }
 
     public List<Recurso> listarPorCategoria(String idCategoria) {
