@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="reservas.presentation.funcionarioP.FuncionarioView">
-  <grid id="27dc6" binding="panelPrincipalFuncionarios" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelPrincipalFuncionarios" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="20" left="10" bottom="20" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="635" height="458"/>
+      <xy x="20" y="20" width="635" height="408"/>
     </constraints>
     <properties/>
     <border type="bevel-lowered"/>
@@ -192,21 +192,19 @@
           </grid>
         </children>
       </grid>
-      <vspacer id="381b1">
+      <scrollpane id="cd546">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="635" height="14"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <component id="8bf5c" class="javax.swing.JTable" binding="tablaFuncionarios">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
-      </component>
+        <border type="none"/>
+        <children>
+          <component id="8d5c" class="javax.swing.JTable" binding="tablaFuncionarios">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>

@@ -3,12 +3,6 @@ package reservas.logic.model;
 //un recurso concreto es reservable e individual
 //es responsabilidad de ReservaService saber si un recurso está disponible o no
 
-public class Recurso {
-    private final String id;
-    private String descripcion;
-    private CategoriaRecurso categoria;
-
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlID;
@@ -16,13 +10,18 @@ import jakarta.xml.bind.annotation.XmlIDREF;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Recurso {
+
     @XmlID
-    private final String id;
-    @XmlIDREF
+    private String id;
+
     private String descripcion;
+
+    @XmlIDREF
     private CategoriaRecurso categoria;
 
+    public Recurso(){
 
+    }
 
     //validaciones
     public Recurso(String id, String descripcion, CategoriaRecurso categoria) {

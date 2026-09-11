@@ -1,14 +1,18 @@
 package reservas.dao;
 
 import jakarta.xml.bind.annotation.*;
-import reservas.logic.model.*;
+import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.model.Recurso;
+import reservas.logic.model.Reserva;
+import reservas.logic.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name = "data")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Data {
+public class
+Data {
 
     @XmlElementWrapper(name = "usuarios")
     @XmlElement(name = "usuario")

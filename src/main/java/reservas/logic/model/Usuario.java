@@ -1,18 +1,25 @@
 package reservas.logic.model;
 
-import java.util.Objects;
-
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.*;
 
 import java.util.Objects;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({Administrador.class, Funcionario.class})
 public abstract class Usuario {
 
-    private final String id;
+    @XmlID
+    @XmlElement(name = "id", required = true)
+    private String id;
+
+    @XmlElement(name = "clave")
     private String clave;
-    private final Rol rol; //Enum de Rol del Usuario:  ADMIN, FUNCIONARIO
+
+    @XmlElement(name = "rol")
+    private Rol rol; //Enum de Rol del Usuario:  ADMIN, FUNCIONARIO
+
+    public Usuario() {
+    }
 
     protected Usuario(String id, String clave, Rol rol) {
         if (id == null || id.isBlank()) {
@@ -30,7 +37,7 @@ public abstract class Usuario {
     }
 
     public String getId() {
-        return id;
+        return id != null ? id : "";
     }
 
     public String getClave() {
@@ -38,7 +45,20 @@ public abstract class Usuario {
     }
 
     public Rol getRol() {
-        return rol;
+        if (this.rol == null) {
+            // Si por alguna razón el rol está nulo al leer el XML,
+            // determina el rol según la instancia real de la clase
+            if (this instanceof Administrador) {
+                this.rol = Rol.ADMIN;
+            } else if (this instanceof Funcionario) {
+                this.rol = Rol.FUNCIONARIO;
+            }
+        }
+        return this.rol;
+    }
+
+    public void setRol(Rol rol){
+        this.rol = rol;
     }
 
     public void setClave(String clave) {

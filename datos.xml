@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+    <usuarios>
+        <usuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="administrador">
+            <id>1</id>
+            <clave>1</clave>
+            <rol>ADMIN</rol>
+        </usuario>
+        <usuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="funcionario">
+            <id>jp1</id>
+            <clave>111</clave>
+            <rol>FUNCIONARIO</rol>
+            <nombre>Juan Perez</nombre>
+            <telefono>3323</telefono>
+        </usuario>
+        <usuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="funcionario">
+            <id>jp2</id>
+            <clave>1210p</clave>
+            <rol>FUNCIONARIO</rol>
+            <nombre>Danny</nombre>
+            <telefono>85586444</telefono>
+        </usuario>
+        <usuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="funcionario">
+            <id>jp3</id>
+            <clave>222</clave>
+            <rol>FUNCIONARIO</rol>
+            <nombre>Mauricio Navarro</nombre>
+            <telefono>555555</telefono>
+        </usuario>
+    </usuarios>
+    <categorias>
+        <categoria>
+            <id>CAT-000001</id>
+            <descripcion>Sala para 10 personas</descripcion>
+        </categoria>
+        <categoria>
+            <id>CAT-000002</id>
+            <descripcion>Laptop windows</descripcion>
+        </categoria>
+        <categoria>
+            <id>CAT-000003</id>
+            <descripcion>Sala para 5 personas</descripcion>
+        </categoria>
+    </categorias>
+    <recursos>
+        <recurso>
+            <id>238715</id>
+            <descripcion>Laptop #238715</descripcion>
+            <categoria>CAT-000002</categoria>
+        </recurso>
+        <recurso>
+            <id>1111</id>
+            <descripcion>Centro</descripcion>
+            <categoria>CAT-000001</categoria>
+        </recurso>
+        <recurso>
+            <id>2222</id>
+            <descripcion>Sala Audiovisual</descripcion>
+            <categoria>CAT-000001</categoria>
+        </recurso>
+        <recurso>
+            <id>333</id>
+            <descripcion>Sala de estar</descripcion>
+            <categoria>CAT-000003</categoria>
+        </recurso>
+        <recurso>
+            <id>11</id>
+            <descripcion>Laptop #1111</descripcion>
+            <categoria>CAT-000002</categoria>
+        </recurso>
+    </recursos>
+    <reservas>
+        <reserva>
+            <id>RES-000001</id>
+            <actividad>Reunión de Trabajo</actividad>
+            <fecha>2026-09-12</fecha>
+            <horaInicio>08:00</horaInicio>
+            <horaFin>10:00</horaFin>
+            <funcionario>jp1</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>238715</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000002</id>
+            <actividad>reunión de despido</actividad>
+            <fecha>2026-09-15</fecha>
+            <horaInicio>09:00</horaInicio>
+            <horaFin>13:00</horaFin>
+            <funcionario>jp3</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>238715</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000003</id>
+            <actividad>reunión de evaluacion</actividad>
+            <fecha>2026-09-16</fecha>
+            <horaInicio>14:00</horaInicio>
+            <horaFin>17:00</horaFin>
+            <funcionario>jp3</funcionario>
+            <estado>CANCELADA</estado>
+            <recursos>
+                <recurso>1111</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000004</id>
+            <actividad>reunión de evaluacion</actividad>
+            <fecha>2026-09-17</fecha>
+            <horaInicio>14:00</horaInicio>
+            <horaFin>17:00</horaFin>
+            <funcionario>jp3</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>238715</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000005</id>
+            <actividad>reunión de evaluacion</actividad>
+            <fecha>2026-09-16</fecha>
+            <horaInicio>14:00</horaInicio>
+            <horaFin>17:00</horaFin>
+            <funcionario>jp3</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>238715</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000006</id>
+            <actividad>reunión de evaluacion</actividad>
+            <fecha>2026-09-12</fecha>
+            <horaInicio>11:00</horaInicio>
+            <horaFin>13:00</horaFin>
+            <funcionario>jp3</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>238715</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000007</id>
+            <actividad>reunión de evaluacion</actividad>
+            <fecha>2026-09-12</fecha>
+            <horaInicio>14:00</horaInicio>
+            <horaFin>16:00</horaFin>
+            <funcionario>jp1</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>238715</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000008</id>
+            <actividad>reunión de evaluacion</actividad>
+            <fecha>2026-09-16</fecha>
+            <horaInicio>11:00</horaInicio>
+            <horaFin>13:00</horaFin>
+            <funcionario>jp1</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>1111</recurso>
+                <recurso>238715</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000009</id>
+            <actividad>reunión de evaluacion</actividad>
+            <fecha>2026-09-12</fecha>
+            <horaInicio>11:00</horaInicio>
+            <horaFin>13:00</horaFin>
+            <funcionario>jp1</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>1111</recurso>
+                <recurso>11</recurso>
+            </recursos>
+        </reserva>
+    </reservas>
+</data>

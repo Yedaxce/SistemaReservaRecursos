@@ -53,7 +53,7 @@ public class LoginView extends JDialog {
             String id = fldLogId.getText().trim();
             String clave = new String(fldPClave.getPassword());
             controller.login(id, clave);
-            dispose(); // login exitoso
+            dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de acceso", JOptionPane.ERROR_MESSAGE);
             fldPClave.setText("");
