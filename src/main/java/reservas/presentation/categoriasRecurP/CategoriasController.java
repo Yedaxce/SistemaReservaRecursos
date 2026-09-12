@@ -24,7 +24,7 @@ public class CategoriasController {
         this.pdfService = new GenerarPdfService();
     }
 
-    // ID generado por Service (categoriaDAO.generarNuevoId())
+    // ID generado por Service
     public void crear(String descripcion) {
         service.crear(descripcion);
         model.setActual(null);
@@ -43,9 +43,9 @@ public class CategoriasController {
         model.setLista(service.listarTodos());
     }
 
-    public void limpiar() {
-        model.setActual(null);
-    }
+        public void limpiar() {
+            model.setActual(null);
+        }
 
     public void seleccionar(int row) {
         if (row >= 0 && row < model.getLista().size()) {

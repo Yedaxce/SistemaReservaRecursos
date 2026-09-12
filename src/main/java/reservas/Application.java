@@ -1,24 +1,38 @@
 package reservas;
 
 import reservas.logic.model.Administrador;
+import reservas.logic.model.Funcionario;
+import reservas.logic.model.Reserva;
+import reservas.logic.model.Usuario;
 import reservas.presentation.Sesion;
-import reservas.presentation.categoriasRecurP.CategoriasController;
+import reservas.presentation.actividadesP.ActividadesController;
+import reservas.presentation.actividadesP.ActividadesModel;
+import reservas.presentation.actividadesP.ActividadesView;
+import reservas.presentation.calendarizacion.CalendarizacionController;
+import reservas.presentation.calendarizacion.CalendarizacionModel;
+import reservas.presentation.calendarizacion.CalendarizacionView;
 import reservas.presentation.categoriasRecurP.CategoriasModel;
 import reservas.presentation.categoriasRecurP.CategoriasView;
-import reservas.presentation.login.LoginController;
-import reservas.presentation.login.LoginModel;
-import reservas.presentation.login.LoginView;
-
-import reservas.logic.model.Funcionario;
+import reservas.presentation.categoriasRecurP.CategoriasController;
+import reservas.presentation.estadisticasP.EstadisticasController;
+import reservas.presentation.estadisticasP.EstadisticasModel;
+import reservas.presentation.estadisticasP.EstadisticasView;
 import reservas.presentation.funcionarioP.FuncionarioController;
 import reservas.presentation.funcionarioP.FuncionarioModel;
 import reservas.presentation.funcionarioP.FuncionarioView;
-
+import reservas.presentation.login.LoginController;
+import reservas.presentation.login.LoginModel;
+import reservas.presentation.login.LoginView;
 import reservas.presentation.recursosP.RecursosController;
 import reservas.presentation.recursosP.RecursosModel;
 import reservas.presentation.recursosP.RecursosView;
+import reservas.presentation.reservasP.ReservasController;
+import reservas.presentation.reservasP.ReservasModel;
+import reservas.presentation.reservasP.ReservasView;
+import reservas.services.ReservaService;
 
 import javax.swing.*;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -56,30 +70,51 @@ public class Application {
         CategoriasView categoriasView = new CategoriasView();
         CategoriasModel categoriasModel = new CategoriasModel();
         CategoriasController categoriasController = new CategoriasController(categoriasView, categoriasModel);
-
         //      Pestaña Recursos
         RecursosView recursosView = new RecursosView();
         RecursosModel recursosModel = new RecursosModel();
         RecursosController recursosController = new RecursosController(recursosView,recursosModel);
 
-        // ESPACIO PARA AGREGAR LAS PESTAÑAS/VENTANAS A LA APP,
-        //solo "desbloquear" segun se vaya haciendo, con la sintaxis
-        // tabbedPane.addTab("nombreVentana", ventanaView.getPanel());
+        //      Pestaña Calendarizacion
+        CalendarizacionView calendarizacionView = new CalendarizacionView();
+        CalendarizacionModel calendarizacionModel = new CalendarizacionModel();
+        CalendarizacionController calendarizacionController = new CalendarizacionController(calendarizacionView,calendarizacionModel);
+
+        //      Pestaña Actividades
+        ActividadesView actividadesView = new ActividadesView();
+        ActividadesModel actividadesModel = new ActividadesModel();
+        ActividadesController actividadesController = new ActividadesController(actividadesView,actividadesModel);
+
+        //      Pestaña Reservas
+        // Obtener el usuario autenticado dinámicamente desde la Sesión
+        Usuario usuarioActual = Sesion.getUsuario();
+
+        Funcionario funcionarioActual = null;
+        if (usuarioActual instanceof Funcionario) {funcionarioActual = (Funcionario) usuarioActual;}        ReservasView reservasView = new ReservasView();
+        ReservasModel reservasModel = new ReservasModel();
+        ReservasController reservasController = new ReservasController(reservasView,reservasModel, funcionarioActual);
+
+        //      Pestaña Estadisticas
+        ReservaService reservaService = new ReservaService();
+        List<Reserva> listaReservas = reservaService.listarTodas();
+        EstadisticasView estadisticasView = new EstadisticasView();
+        EstadisticasModel estadisticasModel = new EstadisticasModel();
+        EstadisticasController estadisticasController = new EstadisticasController(estadisticasView,estadisticasModel,listaReservas);
 
         switch (Sesion.getUsuario().getRol()) {
             case ADMIN:
                 tabbedPane.addTab("Funcionarios", funcionarioView.getPanel());
                 tabbedPane.addTab("Categorías", categoriasView.getPanel());
                 tabbedPane.addTab("Recursos", recursosView.getPanel());
-                // tabbedPane.addTab("Calendarizacion", calendarizacionView.getPanel());
-                // tabbedPane.addTab("Actividades", actividadesView.getPanel());
-                // tabbedPane.addTab("Estadísticas", estadisticaView.getPanel());
+                tabbedPane.addTab("Calendarizacion", calendarizacionView);
+                tabbedPane.addTab("Actividades", actividadesView);
+                tabbedPane.addTab("Estadísticas", estadisticasView);
                 break;
             case FUNCIONARIO:
-                // tabbedPane.addTab("Reservas", reservaView.getPanel());
-                // tabbedPane.addTab("Calendarizacion", calendarizacionView.getPanel());
-                // tabbedPane.addTab("Actividades", actividadesView.getPanel());
-                // tabbedPane.addTab("Estadísticas", estadisticaView.getPanel());
+                tabbedPane.addTab("Reservas", reservasView);
+                tabbedPane.addTab("Calendarizacion", calendarizacionView);
+                tabbedPane.addTab("Actividades", actividadesView);
+                tabbedPane.addTab("Estadísticas", estadisticasView);
                 break;
         }
 
@@ -96,5 +131,4 @@ public class Application {
         Funcionario f1 = new Funcionario("111", "JP-1", "Juan Perez", "1234");
         Administrador Ad1 = new Administrador("222", "yd-21");
     }
-
 }

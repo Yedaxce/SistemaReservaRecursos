@@ -1,10 +1,14 @@
 package reservas.dao;
 
-import jakarta.xml.bind.*;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
+import reservas.logic.model.Administrador;
+import reservas.logic.model.Funcionario;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import reservas.logic.model.*;
 
 
 public class XmlPersister {

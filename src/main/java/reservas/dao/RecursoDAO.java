@@ -1,15 +1,7 @@
 package reservas.dao;
 
-import reservas.logic.model.CategoriaRecurso;
 import reservas.logic.model.Recurso;
 
-import org.w3c.dom.*;
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import reservas.logic.model.Recurso;
 import java.util.ArrayList;
 import java.util.List;
 

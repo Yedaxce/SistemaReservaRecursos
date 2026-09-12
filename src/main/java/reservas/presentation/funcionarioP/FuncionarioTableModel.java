@@ -2,6 +2,7 @@ package reservas.presentation.funcionarioP;
 
 import reservas.logic.model.Funcionario;
 import reservas.presentation.AbstractTableModel;
+
 import java.util.List;
 
 public class FuncionarioTableModel extends AbstractTableModel<Funcionario> {

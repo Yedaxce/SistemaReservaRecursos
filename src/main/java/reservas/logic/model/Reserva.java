@@ -1,6 +1,9 @@
 package reservas.logic.model;
 
 import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import reservas.dao.LocalDateAdapter;
+import reservas.dao.LocalTimeAdapter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,21 +12,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class Reserva {
-    private final String id;
-    private String actividad;
-    private LocalDate fecha;
-    private LocalTime horaInicio;
-    private LocalTime horaFin;
-    private final Funcionario funcionario;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import reservas.dao.LocalDateAdapter;
-import reservas.dao.LocalTimeAdapter;
-
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Reserva {
     @XmlID
-    private final String id;
+    private String id;
 
     private String actividad;
 
@@ -32,16 +24,22 @@ public class Reserva {
 
     @XmlJavaTypeAdapter(LocalTimeAdapter.class)
     private LocalTime horaInicio;
+
+    @XmlJavaTypeAdapter(LocalTimeAdapter.class)
     private LocalTime horaFin;
 
     @XmlIDREF
-    private final Funcionario funcionario;
+    private Funcionario funcionario;
+
+    private EstadoReserva estado;
 
     @XmlIDREF
     @XmlElementWrapper(name = "recursos")
     @XmlElement(name = "recurso")
-    private EstadoReserva estado;
-    private final List<Recurso> recursos;
+    private List<Recurso> recursos = new ArrayList<>();
+
+    public Reserva(){
+    }
 
     public Reserva(String id, String actividad, LocalDate fecha, LocalTime horaInicio,
                    LocalTime horaFin, Funcionario funcionario) {

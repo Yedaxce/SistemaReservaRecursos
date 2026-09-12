@@ -24,6 +24,10 @@ public class ReservaService {
         this.funcionarioDAO = new FuncionarioDAO();
     }
 
+    public List<Reserva> listarTodas() {
+        return reservaDAO.listarTodos(); // Asegúrate de tener este método en ReservaDAO
+    }
+
     public List<Reserva> listarPorFuncionario(String idFuncionario) {
         return reservaDAO.listarPorFuncionario(idFuncionario);
     }
@@ -38,10 +42,14 @@ public class ReservaService {
         // 1. Validar disponibilidad por cada categoría solicitada
         for (CategoriaRecurso cat : categoriasSolicitadas) {
             List<Recurso> disp = obtenerRecursosDisponibles(fecha, horaInicio, horaFin, cat);
+
+            // Remover recursos que ya hayan sido asignados a otra categoría en este mismo bucle
+            disp.removeIf(r -> recursosAsignar.stream().anyMatch(asignado -> asignado.getId().equals(r.getId())));
+
             if (disp.isEmpty()) {
                 noDisponibles.add(cat);
             } else {
-                // Tomar el primer recurso disponible de esa categoría
+                // Tomar el primer recurso disponible no asignado
                 recursosAsignar.add(disp.get(0));
             }
         }
@@ -77,14 +85,24 @@ public class ReservaService {
         List<Reserva> reservasFecha = reservaDAO.listarPorFecha(fecha);
         List<Recurso> disponibles = new ArrayList<>();
 
+        if (todosRecursoCat == null || todosRecursoCat.isEmpty()) {
+            return disponibles; // Si no hay recursos registrados en la categoría, retorna lista vacía
+        }
+
         for (Recurso r : todosRecursoCat) {
             boolean ocupado = false;
             for (Reserva res : reservasFecha) {
-                if (res.estaActiva() && res.getRecursos().contains(r)) {
-                    // Verificar solapamiento de horarios
-                    if (horaInicio.isBefore(res.getHoraFin()) && res.getHoraInicio().isBefore(horaFin)) {
-                        ocupado = true;
-                        break;
+                if (res.estaActiva() && res.getRecursos() != null) {
+                    // Comparación por ID para evitar fallos de referencias de objetos distintas
+                    boolean contieneRecurso = res.getRecursos().stream()
+                            .anyMatch(recReserva -> recReserva.getId().equals(r.getId()));
+
+                    if (contieneRecurso) {
+                        // Verificar solapamiento estricto de horarios (inicio1 < fin2 AND inicio2 < fin1)
+                        if (horaInicio.isBefore(res.getHoraFin()) && res.getHoraInicio().isBefore(horaFin)) {
+                            ocupado = true;
+                            break;
+                        }
                     }
                 }
             }
@@ -93,5 +111,22 @@ public class ReservaService {
             }
         }
         return disponibles;
+    }
+
+    public List<Reserva> buscarPorFechaYCategoria(LocalDate fecha, String idCategoria) {
+        List<Reserva> reservasFecha = reservaDAO.listarPorFecha(fecha);
+        List<Reserva> resultado = new ArrayList<>();
+
+        for (Reserva r : reservasFecha) {
+            if (r.estaActiva()) {
+                boolean perteneceACategoria = r.getRecursos().stream()
+                        .anyMatch(rec -> rec.getCategoria() != null &&
+                                rec.getCategoria().getId().equals(idCategoria));
+                if (perteneceACategoria) {
+                    resultado.add(r);
+                }
+            }
+        }
+        return resultado;
     }
 }

@@ -52,7 +52,7 @@ public class CategoriasView implements PropertyChangeListener {
             String descripcion = descripcionCatFld.getText().trim();
 
             if (esNueva) {
-                // El ID lo genera el Service -- no se lee de idCatFld al crear.
+                // El ID lo genera el Service
                 controller.crear(descripcion);
                 JOptionPane.showMessageDialog(panelPrincipalCategorias, "Categoría creada correctamente.");
             } else {
@@ -83,7 +83,7 @@ public class CategoriasView implements PropertyChangeListener {
         chooser.setSelectedFile(new File("categorias.pdf"));
         int resultado = chooser.showSaveDialog(panelPrincipalCategorias);
         if (resultado != JFileChooser.APPROVE_OPTION) {
-            return; // el usuario canceló el diálogo
+            return;
         }
         try {
             String ruta = chooser.getSelectedFile().getAbsolutePath();
@@ -107,8 +107,6 @@ public class CategoriasView implements PropertyChangeListener {
         model.addPropertyChangeListener(this);
     }
 
-    // Necesario para insertar esta Vista en el JTabbedPane desde Application
-    // (tabbedPane.addTab("Categorías", categoriasView.getPanel())).
     public JPanel getPanel() {
         return panelPrincipalCategorias;
     }
@@ -123,17 +121,25 @@ public class CategoriasView implements PropertyChangeListener {
             }
             case CategoriasModel.ACTUAL: {
                 CategoriaRecurso c = model.getActual();
+
                 if (c == null) {
                     idCatFld.setText("");
                     descripcionCatFld.setText("");
                     tablaCategorias.clearSelection();
+
+                    idCatFld.setEnabled(true);
+                    idCatFld.setEditable(true);
                 } else {
                     idCatFld.setText(c.getId());
                     descripcionCatFld.setText(c.getDescripcion());
+
+                    // El ID NO es editable para proteger la llave primaria
+                    idCatFld.setEnabled(false);
+                    idCatFld.setEditable(false);
                 }
-                // idCatFld siempre queda de solo lectura: el ID nunca lo escribe
-                // el usuario, ni al crear (lo genera el Service) ni al editar.
-                idCatFld.setEditable(false);
+
+                descripcionCatFld.setEnabled(true);
+                descripcionCatFld.setEditable(true);
                 break;
             }
         }

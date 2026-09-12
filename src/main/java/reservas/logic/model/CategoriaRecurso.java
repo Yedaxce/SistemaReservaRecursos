@@ -7,12 +7,17 @@ import java.util.Objects;
 
 /*agrupa los recurso del mismo tipo*/
 
-public class CategoriaRecurso {
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CategoriaRecurso {
+
     @XmlID
-    private final String id;
+    private String id;
+
     private String descripcion;
+
+    public CategoriaRecurso(){
+    }
 
     public CategoriaRecurso(String id, String descripcion) {
         //validaciones
@@ -64,4 +69,4 @@ public class CategoriaRecurso {
         return descripcion;
     }
 
-}
+};

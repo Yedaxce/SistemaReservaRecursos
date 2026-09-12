@@ -9,6 +9,11 @@ public class Funcionario extends Usuario {
     private String nombre;
     private String telefono;
 
+    public Funcionario(){
+        super();
+        this.setRol(Rol.FUNCIONARIO);
+    }
+
     public Funcionario(String id, String clave, String nombre, String telefono) {
         super(id, clave, Rol.FUNCIONARIO);
         //validacion

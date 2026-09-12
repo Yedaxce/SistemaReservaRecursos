@@ -1,6 +1,7 @@
 package reservas.dao;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+
 import java.time.LocalTime;
 
 public class LocalTimeAdapter extends XmlAdapter<String, LocalTime> {

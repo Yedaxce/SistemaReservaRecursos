@@ -1,18 +1,7 @@
 package reservas.dao;
 
-import reservas.logic.model.Administrador;
-import reservas.logic.model.Funcionario;
-import reservas.logic.model.Rol;
 import reservas.logic.model.Usuario;
 
-import org.w3c.dom.*;
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.util.ArrayList;
-import reservas.logic.model.Usuario;
 import java.util.List;
 
 public class UsuarioDAO {
