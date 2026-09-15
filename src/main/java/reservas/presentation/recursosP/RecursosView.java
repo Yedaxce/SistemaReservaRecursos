@@ -4,6 +4,7 @@ import reservas.logic.model.CategoriaRecurso;
 import reservas.logic.model.Recurso;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.beans.PropertyChangeListener;
@@ -56,6 +57,9 @@ public class RecursosView implements PropertyChangeListener {
                 controller.seleccionar(listaRecursosTable.getSelectedRow());
             }
         });
+        listaRecursosTable.setShowHorizontalLines(true);
+        listaRecursosTable.setShowVerticalLines(true);
+        listaRecursosTable.setGridColor(Color.GRAY);
     }
 
     private void onGuardar() {

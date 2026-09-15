@@ -134,6 +134,9 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
 
             tableMisReservas = new JTable();
             tableMisReservas.setRowHeight(22);
+            tableMisReservas.setShowHorizontalLines(true);
+            tableMisReservas.setShowVerticalLines(true);
+            tableMisReservas.setGridColor(Color.GRAY);
             panelTabla.add(new JScrollPane(tableMisReservas), BorderLayout.CENTER);
 
             JPanel panelEast = new JPanel(new FlowLayout());

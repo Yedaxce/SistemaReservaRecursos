@@ -24,20 +24,32 @@ public class UsuarioDAO {
         return null;
     }
 
-    public boolean actualizarClave(String id, String nuevaClave) {
-        try {
-            Data data = XmlPersister.instance().load();
-            for (Usuario u : data.getUsuarios()) {
-                if (u.getId().equalsIgnoreCase(id)) {
-                    u.setClave(nuevaClave);
-                    XmlPersister.instance().store(data);
-                    return true;
-                }
+    public boolean actualizarClave(String id, String claveActual, String nuevaClave) throws Exception {
+        Data data = XmlPersister.instance().load();
+
+        // 1. Buscar el usuario en la lista
+        Usuario usuarioEncontrado = null;
+        for (Usuario u : data.getUsuarios()) {
+            if (u.getId().equalsIgnoreCase(id)) {
+                usuarioEncontrado = u;
+                break;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return false;
+
+        // 2. Validar si el ID de usuario existe
+        if (usuarioEncontrado == null) {
+            throw new Exception("El usuario con ID '" + id + "' no existe en el sistema.");
+        }
+
+        // 3. Validar si la contraseña actual ingresada coincide
+        if (!usuarioEncontrado.getClave().equals(claveActual)) {
+            throw new Exception("La contraseña actual es incorrecta.");
+        }
+
+        // 4. Actualizar la contraseña y guardar en el XML
+        usuarioEncontrado.setClave(nuevaClave);
+        XmlPersister.instance().store(data);
+        return true;
     }
 
     public List<Usuario> listarTodos() {

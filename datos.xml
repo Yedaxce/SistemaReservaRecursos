@@ -174,10 +174,23 @@
             <horaInicio>11:00</horaInicio>
             <horaFin>13:00</horaFin>
             <funcionario>jp1</funcionario>
-            <estado>ACTIVA</estado>
+            <estado>CANCELADA</estado>
             <recursos>
                 <recurso>1111</recurso>
                 <recurso>11</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000010</id>
+            <actividad>reunion de despido</actividad>
+            <fecha>2026-09-16</fecha>
+            <horaInicio>09:00</horaInicio>
+            <horaFin>13:00</horaFin>
+            <funcionario>jp1</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>11</recurso>
+                <recurso>333</recurso>
             </recursos>
         </reserva>
     </reservas>

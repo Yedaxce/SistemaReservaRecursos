@@ -9,6 +9,7 @@ public class LoginView extends JDialog {
     private JButton btnCancelar;
     private JTextField fldLogId;
     private JPasswordField fldPClave;
+    private JButton btnCambiarContrasena;
 
     private LoginController controller;
     private LoginModel model;
@@ -32,7 +33,14 @@ public class LoginView extends JDialog {
             }
         });
 
-        // call onCancel() when cross is clicked
+        // Evento para abrir el dialogo de cambio de contraseña
+        btnCambiarContrasena.addActionListener(e -> {
+            if (controller != null) {
+                controller.solicitarCambioContrasena();
+            }
+        });
+
+        // call onCancel()
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -40,7 +48,7 @@ public class LoginView extends JDialog {
             }
         });
 
-        // call onCancel() on ESCAPE
+        // call onCancel()
         logPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
@@ -52,7 +60,7 @@ public class LoginView extends JDialog {
         try {
             String id = fldLogId.getText().trim();
             String clave = new String(fldPClave.getPassword());
-            controller.login(id, clave);
+            controller. login(id, clave);
             dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de acceso", JOptionPane.ERROR_MESSAGE);
@@ -61,8 +69,11 @@ public class LoginView extends JDialog {
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
+    }
+
+    public String getIdUsuario() {
+        return fldLogId.getText().trim();
     }
 
     public void setController(LoginController controller) {
@@ -72,4 +83,5 @@ public class LoginView extends JDialog {
     public void setModel(LoginModel model) {
         this.model = model;
     }
+
 }

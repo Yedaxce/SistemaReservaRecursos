@@ -45,6 +45,9 @@ public class EstadisticasView extends JPanel{
 
         tableModelRecursos = new EstadisticasRecursosTableModel();
         tableEstadisticasRecursos = new JTable(tableModelRecursos);
+        tableEstadisticasRecursos.setShowHorizontalLines(true);
+        tableEstadisticasRecursos.setShowVerticalLines(true);
+        tableEstadisticasRecursos.setGridColor(Color.GRAY);
         JScrollPaneRecursos = new JScrollPane(tableEstadisticasRecursos);
         JScrollPaneRecursos.setPreferredSize(new Dimension(300, 110));
 
@@ -57,6 +60,9 @@ public class EstadisticasView extends JPanel{
 
         tableModelActividades = new EstadisticasActividadesTableModel();
         tableEstadisticasActividades = new JTable(tableModelActividades);
+        tableEstadisticasActividades.setShowHorizontalLines(true);
+        tableEstadisticasActividades.setShowVerticalLines(true);
+        tableEstadisticasActividades.setGridColor(Color.GRAY);
         JScrollPaneActvidades = new JScrollPane(tableEstadisticasActividades);
         JScrollPaneActvidades.setPreferredSize(new Dimension(300, 110));
 

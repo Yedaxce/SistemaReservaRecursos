@@ -41,4 +41,16 @@ public class FuncionarioService {
     public void eliminar(String id) {
         funcionarioDAO.eliminar(id);
     }
+
+    public boolean cambiarContrasena(String idFuncionario, String passActual, String passNueva) {
+        Funcionario f = funcionarioDAO.buscarPorId(idFuncionario);
+
+        // Validar existencia del usuario y coincidencia de contraseña actual
+        if (f != null && f.getClave().equals(passActual)) {
+            f.setClave(passNueva);
+            funcionarioDAO.actualizar(f); // Persistir cambios en XML / BD
+            return true;
+        }
+        return false;
+    }
 }

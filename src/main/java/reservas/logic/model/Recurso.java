@@ -19,9 +19,7 @@ public class Recurso {
     @XmlIDREF
     private CategoriaRecurso categoria;
 
-    public Recurso(){
-
-    }
+    public Recurso(){}
 
     //validaciones
     public Recurso(String id, String descripcion, CategoriaRecurso categoria) {

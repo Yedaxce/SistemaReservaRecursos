@@ -39,7 +39,6 @@ public class Application {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception ex) {}
-        database();
         doLogin();
         if (Sesion.isLoggedIn()) {
             doRun();
@@ -103,32 +102,35 @@ public class Application {
 
         switch (Sesion.getUsuario().getRol()) {
             case ADMIN:
-                tabbedPane.addTab("Funcionarios", funcionarioView.getPanel());
-                tabbedPane.addTab("Categorías", categoriasView.getPanel());
-                tabbedPane.addTab("Recursos", recursosView.getPanel());
-                tabbedPane.addTab("Calendarizacion", calendarizacionView);
-                tabbedPane.addTab("Actividades", actividadesView);
-                tabbedPane.addTab("Estadísticas", estadisticasView);
+                tabbedPane.addTab("Funcionarios",cargarIcono("/icons/funcionarios.png"), funcionarioView.getPanel());
+                tabbedPane.addTab("Categorías",cargarIcono("/icons/categorias.png"), categoriasView.getPanel());
+                tabbedPane.addTab("Recursos",cargarIcono("/icons/recursos.png"), recursosView.getPanel());
+                tabbedPane.addTab("Calendarizacion",cargarIcono("/icons/calendarizacion.png"), calendarizacionView);
+                tabbedPane.addTab("Actividades",cargarIcono("/icons/actividaes.png"), actividadesView);
+                tabbedPane.addTab("Estadísticas",cargarIcono("/icons/statistics.png"), estadisticasView);
                 break;
             case FUNCIONARIO:
-                tabbedPane.addTab("Reservas", reservasView);
-                tabbedPane.addTab("Calendarizacion", calendarizacionView);
-                tabbedPane.addTab("Actividades", actividadesView);
-                tabbedPane.addTab("Estadísticas", estadisticasView);
+                tabbedPane.addTab("Reservas",cargarIcono("/icons/reservas.png"), reservasView);
+                tabbedPane.addTab("Calendarizacion",cargarIcono("/icons/calendarizacion.png"), calendarizacionView);
+                tabbedPane.addTab("Actividades",cargarIcono("/icons/actividaes.png"), actividadesView);
+                tabbedPane.addTab("Estadísticas",cargarIcono("/icons/statistics.png"), estadisticasView);
                 break;
         }
 
         window.setTitle("Sistema de Reserva de Recursos - " + Sesion.getUsuario().getId()
                 + " (" + Sesion.getUsuario().getRol() + ")");
-        window.setSize(900, 600);
+        window.pack();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
     }
 
-    public static void database () {
-        Funcionario f1 = new Funcionario("111", "JP-1", "Juan Perez", "1234");
-        Administrador Ad1 = new Administrador("222", "yd-21");
+    private static Icon cargarIcono(String ruta) {
+        java.net.URL url = Application.class.getResource(ruta);
+        if (url != null) {
+            return new ImageIcon(url);
+        }
+        return null;
     }
 }
