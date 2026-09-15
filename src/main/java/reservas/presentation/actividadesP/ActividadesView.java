@@ -55,6 +55,10 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
         tableActividades = new JTable();
         tableActividades.setRowHeight(25);
         tableActividades.setDefaultRenderer(Object.class, new ActividadesCellRenderer());
+        tableActividades.setShowGrid(true);
+        tableActividades.setShowHorizontalLines(true);
+        tableActividades.setShowVerticalLines(true);
+        tableActividades.setGridColor(Color.GRAY);
 
         JScrollPanel = new JScrollPane(tableActividades);
         JScrollPanel.setBorder(BorderFactory.createTitledBorder("Actividades semanales"));

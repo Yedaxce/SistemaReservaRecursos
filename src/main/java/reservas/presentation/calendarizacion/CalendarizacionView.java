@@ -49,6 +49,9 @@ public class CalendarizacionView extends JPanel implements PropertyChangeListene
 
         tableCalendarizacion.setRowHeight(25);
         tableCalendarizacion.setDefaultRenderer(Object.class, new CalendarizacionCellRenderer());
+        tableCalendarizacion.setShowHorizontalLines(true);
+        tableCalendarizacion.setShowVerticalLines(true);
+        tableCalendarizacion.setGridColor(Color.GRAY);
 
         JScrollPane = new JScrollPane(tableCalendarizacion);
         JScrollPane.setBorder(BorderFactory.createTitledBorder("Calendarización de recursos"));

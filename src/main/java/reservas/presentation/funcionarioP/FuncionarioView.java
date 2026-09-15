@@ -2,6 +2,7 @@ package reservas.presentation.funcionarioP;
 
 import reservas.logic.model.Funcionario;
 
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
@@ -52,6 +53,9 @@ public class FuncionarioView implements PropertyChangeListener {
                 controller.seleccionar(tablaFuncionarios.getSelectedRow());
             }
         });
+        tablaFuncionarios.setShowHorizontalLines(true);
+        tablaFuncionarios.setShowVerticalLines(true);
+        tablaFuncionarios.setGridColor(Color.GRAY);
     }
 
     private void onGuardar() {

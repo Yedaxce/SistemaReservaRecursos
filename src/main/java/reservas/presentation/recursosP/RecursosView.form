@@ -63,6 +63,8 @@
               <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <horizontalTextPosition value="10"/>
+              <icon value="icons/search.png"/>
               <text value="Buscar"/>
             </properties>
           </component>
@@ -71,6 +73,8 @@
               <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <horizontalTextPosition value="10"/>
+              <icon value="icons/pdf.png"/>
               <text value="Imprimir"/>
             </properties>
           </component>
@@ -159,6 +163,7 @@
                 <properties>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="10"/>
+                  <icon value="icons/save.png"/>
                   <text value="Guardar"/>
                   <verticalTextPosition value="0"/>
                 </properties>
@@ -173,6 +178,8 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <horizontalTextPosition value="10"/>
+                  <icon value="icons/delete.png"/>
                   <text value="Borrar"/>
                 </properties>
               </component>
@@ -181,6 +188,8 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <horizontalTextPosition value="10"/>
+                  <icon value="icons/clear.png"/>
                   <text value="Limpiar"/>
                 </properties>
               </component>

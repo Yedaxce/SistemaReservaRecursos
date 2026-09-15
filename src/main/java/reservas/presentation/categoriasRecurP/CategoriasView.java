@@ -2,6 +2,7 @@ package reservas.presentation.categoriasRecurP;
 
 import reservas.logic.model.CategoriaRecurso;
 
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
@@ -44,6 +45,9 @@ public class CategoriasView implements PropertyChangeListener {
                 controller.seleccionar(tablaCategorias.getSelectedRow());
             }
         });
+        tablaCategorias.setShowHorizontalLines(true);
+        tablaCategorias.setShowVerticalLines(true);
+        tablaCategorias.setGridColor(Color.GRAY);
     }
 
     private void onGuardar() {

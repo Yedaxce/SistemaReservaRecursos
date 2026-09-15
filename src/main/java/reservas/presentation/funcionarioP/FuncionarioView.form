@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panelPrincipalFuncionarios" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="20" left="10" bottom="20" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="635" height="408"/>
+      <xy x="20" y="20" width="681" height="408"/>
     </constraints>
     <properties/>
     <border type="bevel-lowered"/>
@@ -55,6 +55,8 @@
               <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <horizontalTextPosition value="10"/>
+              <icon value="icons/search.png"/>
               <text value="Buscar"/>
             </properties>
           </component>
@@ -63,6 +65,8 @@
               <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <horizontalTextPosition value="10"/>
+              <icon value="icons/pdf.png"/>
               <text value="Imprimir"/>
             </properties>
           </component>
@@ -169,6 +173,8 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <horizontalTextPosition value="10"/>
+                  <icon value="icons/save.png"/>
                   <text value="Guardar"/>
                 </properties>
               </component>
@@ -177,6 +183,8 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <horizontalTextPosition value="10"/>
+                  <icon value="icons/delete.png"/>
                   <text value="Borrar"/>
                 </properties>
               </component>
@@ -185,6 +193,8 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <horizontalTextPosition value="10"/>
+                  <icon value="icons/clear.png"/>
                   <text value="Limpiar"/>
                 </properties>
               </component>
