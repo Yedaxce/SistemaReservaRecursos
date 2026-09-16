@@ -75,10 +75,17 @@ public class ActividadesTableModel extends AbstractTableModel {
 
         return reservas.stream()
                 .filter(r -> r.estaActiva() &&
+                        r.getFecha() != null &&
                         r.getFecha().equals(dia) &&
                         !hora.isBefore(r.getHoraInicio()) && hora.isBefore(r.getHoraFin()))
-                .map(r -> r.getActividad() + " (" + r.getFuncionario().getNombre() + ")")
+                .map(r -> {
+                    String nombreFuncionario = (r.getFuncionario() != null && r.getFuncionario().getNombre() != null)
+                            ? r.getFuncionario().getNombre()
+                            : "Sin asignar";
+                    return r.getActividad() + " (" + nombreFuncionario + ")";
+                })
                 .findFirst()
                 .orElse("");
     }
+
 }
