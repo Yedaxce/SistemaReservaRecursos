@@ -68,6 +68,9 @@
             <descripcion>Laptop #1111</descripcion>
             <categoria>CAT-000002</categoria>
         </recurso>
+        <recurso/>
+        <recurso/>
+        <recurso/>
     </recursos>
     <reservas>
         <reserva>
@@ -191,6 +194,42 @@
             <recursos>
                 <recurso>11</recurso>
                 <recurso>333</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000011</id>
+            <actividad>Reunión de prueba</actividad>
+            <fecha>2026-09-17</fecha>
+            <horaInicio>08:00</horaInicio>
+            <horaFin>10:00</horaFin>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>1111</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000012</id>
+            <actividad>reunión de compañeros </actividad>
+            <fecha>2026-09-20</fecha>
+            <horaInicio>08:00</horaInicio>
+            <horaFin>10:00</horaFin>
+            <funcionario>jp2</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>238715</recurso>
+                <recurso>333</recurso>
+            </recursos>
+        </reserva>
+        <reserva>
+            <id>RES-000013</id>
+            <actividad>Reunión de prueba</actividad>
+            <fecha>2026-09-17</fecha>
+            <horaInicio>08:00</horaInicio>
+            <horaFin>10:00</horaFin>
+            <funcionario>111</funcionario>
+            <estado>ACTIVA</estado>
+            <recursos>
+                <recurso>2222</recurso>
             </recursos>
         </reserva>
     </reservas>
