@@ -1,5 +1,7 @@
 package reservas.presentation.actividadesP;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import reservas.presentation.actividadesP.ActividadesCellRenderer;
 
 import javax.swing.*;
@@ -9,14 +11,14 @@ import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class ActividadesView extends JPanel implements PropertyChangeListener {
     private JScrollPane JScrollPanel;
-    private JTextField txtFechaRef;
-    private JButton btnFecha;
     private JButton btnCargar;
     private JButton btnImprimir;
     private JTable tableActividades;
+    private DatePicker dpFecha;
 
     private ActividadesController controller;
     private ActividadesModel model;
@@ -28,25 +30,25 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
     private void initComponents() {
         setLayout(new BorderLayout(10, 10));
 
+        dpFecha = new DatePicker();
+        dpFecha.setDate(LocalDate.now());
+        DatePickerSettings settings = dpFecha.getSettings();
+        settings.setLocale(new Locale("es", "CR"));
+        settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));
+
         // Panel Filtros (Norte)
         JPanel panelFiltros = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         panelFiltros.setBorder(BorderFactory.createTitledBorder("Semana"));
 
         panelFiltros.add(new JLabel("Fecha de referencia:"));
-        txtFechaRef = new JTextField(12);
-        txtFechaRef.setEditable(false);
-        txtFechaRef.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        panelFiltros.add(txtFechaRef);
-
-        btnFecha = new JButton("...");
-        panelFiltros.add(btnFecha);
+        panelFiltros.add(dpFecha);
 
         btnCargar = new JButton("Cargar");
-        btnCargar.setIcon(cargarIcono("/iconos/check.png"));
+        btnCargar.setIcon(cargarIcono("/icons/check.png"));
         panelFiltros.add(btnCargar);
 
         btnImprimir = new JButton("Imprimir");
-        btnImprimir.setIcon(cargarIcono("/iconos/pdf.png"));
+        btnImprimir.setIcon(cargarIcono("/icons/pdf.png"));
         panelFiltros.add(btnImprimir);
 
         add(panelFiltros, BorderLayout.NORTH);
@@ -67,8 +69,12 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
         // Eventos
         btnCargar.addActionListener(e -> {
             if (controller != null) {
-                LocalDate fecha = LocalDate.parse(txtFechaRef.getText());
-                controller.cargarActividades(fecha);
+            LocalDate fecha = dpFecha.getDate();
+            if (fecha == null) {
+                JOptionPane.showMessageDialog(this, "seleccione una fecha de referencia", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            controller.cargarActividades(fecha);
             }
         });
 
@@ -87,17 +93,6 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
             }
         });
 
-        btnFecha.addActionListener(e -> {
-            String nuevaFecha = JOptionPane.showInputDialog(this, "Ingrese fecha de referencia (AAAA-MM-DD):", txtFechaRef.getText());
-            if (nuevaFecha != null && !nuevaFecha.isBlank()) {
-                try {
-                    LocalDate.parse(nuevaFecha);
-                    txtFechaRef.setText(nuevaFecha);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Formato inválido. Use AAAA-MM-DD", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
     }
 
     private ImageIcon cargarIcono(String ruta) {

@@ -106,13 +106,13 @@ public class Application {
                 tabbedPane.addTab("Categorías",cargarIcono("/icons/categorias.png"), categoriasView.getPanel());
                 tabbedPane.addTab("Recursos",cargarIcono("/icons/recursos.png"), recursosView.getPanel());
                 tabbedPane.addTab("Calendarizacion",cargarIcono("/icons/calendarizacion.png"), calendarizacionView);
-                tabbedPane.addTab("Actividades",cargarIcono("/icons/actividaes.png"), actividadesView);
+                tabbedPane.addTab("Actividades",cargarIcono("/icons/actividades.png"), actividadesView);
                 tabbedPane.addTab("Estadísticas",cargarIcono("/icons/statistics.png"), estadisticasView);
                 break;
             case FUNCIONARIO:
                 tabbedPane.addTab("Reservas",cargarIcono("/icons/reservas.png"), reservasView);
                 tabbedPane.addTab("Calendarizacion",cargarIcono("/icons/calendarizacion.png"), calendarizacionView);
-                tabbedPane.addTab("Actividades",cargarIcono("/icons/actividaes.png"), actividadesView);
+                tabbedPane.addTab("Actividades",cargarIcono("/icons/actividades.png"), actividadesView);
                 tabbedPane.addTab("Estadísticas",cargarIcono("/icons/statistics.png"), estadisticasView);
                 break;
         }
