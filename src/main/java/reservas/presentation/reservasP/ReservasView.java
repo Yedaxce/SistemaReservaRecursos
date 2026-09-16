@@ -2,9 +2,9 @@ package reservas.presentation.reservasP;
 
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 
 import java.util.ArrayList;
 import java.util.List;

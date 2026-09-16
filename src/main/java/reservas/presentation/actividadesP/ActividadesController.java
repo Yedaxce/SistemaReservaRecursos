@@ -1,6 +1,6 @@
 package reservas.presentation.actividadesP;
 
-import reservas.logic.model.Reserva;
+import reservas.logic.Reserva;
 import reservas.services.GenerarPdfService;
 import reservas.services.ReservaService;
 

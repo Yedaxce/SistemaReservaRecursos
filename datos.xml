@@ -27,6 +27,13 @@
             <nombre>Mauricio Navarro</nombre>
             <telefono>555555</telefono>
         </usuario>
+        <usuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="funcionario">
+            <id>jp4</id>
+            <clave>mm-04</clave>
+            <rol>FUNCIONARIO</rol>
+            <nombre>Maria Martinez</nombre>
+            <telefono>77778888</telefono>
+        </usuario>
     </usuarios>
     <categorias>
         <categoria>
@@ -68,9 +75,6 @@
             <descripcion>Laptop #1111</descripcion>
             <categoria>CAT-000002</categoria>
         </recurso>
-        <recurso/>
-        <recurso/>
-        <recurso/>
     </recursos>
     <reservas>
         <reserva>
@@ -226,7 +230,6 @@
             <fecha>2026-09-17</fecha>
             <horaInicio>08:00</horaInicio>
             <horaFin>10:00</horaFin>
-            <funcionario>111</funcionario>
             <estado>ACTIVA</estado>
             <recursos>
                 <recurso>2222</recurso>

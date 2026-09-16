@@ -186,7 +186,7 @@ public class EstadisticasView extends JPanel{
         DatePicker datePicker = new DatePicker();
         DatePickerSettings settings = datePicker.getSettings();
         settings.setLocale(new Locale("es", "CR"));
-        settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));
+        settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
         return datePicker;
     }
 

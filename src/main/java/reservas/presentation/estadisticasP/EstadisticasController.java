@@ -1,8 +1,7 @@
 package reservas.presentation.estadisticasP;
 
-import reservas.logic.model.Reserva;
+import reservas.logic.Reserva;
 
-import javax.swing.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;

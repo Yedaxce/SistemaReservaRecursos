@@ -1,8 +1,8 @@
 package reservas.presentation.calendarizacion;
 
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 import reservas.services.CategoriaRecursoService;
 import reservas.services.GenerarPdfService;
 import reservas.services.RecursoService;
@@ -37,7 +37,7 @@ public class CalendarizacionController {
     }
 
     public void cargarCalendarizacion(LocalDate fecha, CategoriaRecurso categoria) {
-        if (categoria == null) return;
+        if (fecha == null || categoria == null) return;
 
         model.setFecha(fecha);
         model.setCategoriaSeleccionada(categoria);

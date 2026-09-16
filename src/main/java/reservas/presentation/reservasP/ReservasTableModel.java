@@ -1,7 +1,7 @@
 package reservas.presentation.reservasP;
 
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;

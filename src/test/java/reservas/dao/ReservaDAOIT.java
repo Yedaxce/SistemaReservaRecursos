@@ -3,7 +3,7 @@ package reservas.dao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import reservas.logic.model.Reserva;
+import reservas.logic.Reserva;
 
 import java.util.List;
 

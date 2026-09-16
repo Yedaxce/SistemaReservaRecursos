@@ -1,6 +1,6 @@
 package reservas.dao;
 
-import reservas.logic.model.Usuario;
+import reservas.logic.Usuario;
 
 import java.util.List;
 

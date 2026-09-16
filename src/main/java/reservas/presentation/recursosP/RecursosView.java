@@ -1,14 +1,13 @@
 package reservas.presentation.recursosP;
 
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Recurso;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Recurso;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.beans.PropertyChangeListener;
-import java.awt.print.PrinterException;
 import java.beans.PropertyChangeEvent;
 
 public class RecursosView implements PropertyChangeListener {
@@ -173,7 +172,4 @@ public class RecursosView implements PropertyChangeListener {
         }
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }

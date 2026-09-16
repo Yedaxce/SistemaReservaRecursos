@@ -2,7 +2,7 @@ package reservas.unitTest;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.CategoriaRecurso;
 
 import static org.junit.jupiter.api.Assertions.*;
 

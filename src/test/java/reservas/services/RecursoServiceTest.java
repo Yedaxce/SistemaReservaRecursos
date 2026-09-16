@@ -3,7 +3,7 @@ package reservas.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import reservas.logic.model.Recurso;
+import reservas.logic.Recurso;
 
 import java.util.List;
 

@@ -3,10 +3,10 @@ package reservas.services;
 import reservas.dao.FuncionarioDAO;
 import reservas.dao.RecursoDAO;
 import reservas.dao.ReservaDAO;
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Funcionario;
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Funcionario;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
