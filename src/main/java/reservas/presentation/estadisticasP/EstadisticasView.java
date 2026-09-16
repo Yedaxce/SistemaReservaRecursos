@@ -1,5 +1,7 @@
 package reservas.presentation.estadisticasP;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -7,27 +9,26 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.net.URL;
 import java.util.Map;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class EstadisticasView extends JPanel{
-    private JTextField txtFechaDesdeRecursos;
-    private JButton btnFechaDesdeRecursos;
-    private JTextField txtJFechaHastaRecursos;
-    private JButton btnFechaHastaRecursos;
     private JButton btnCargarRecursos;
     private JButton btnCargarActividades;
-    private JButton bntFechaHastaActividades;
-    private JTextField txtFechaDesdeActividades;
-    private JButton btnFechaDesdeActividades;
-    private JTextField txtJFechaHastaActividades;
     private JTable tableEstadisticasRecursos;
     private JTable tableEstadisticasActividades;
     private JScrollPane JScrollPaneActvidades;
     private JScrollPane JScrollPaneRecursos;
     private JPanel panelGraficoRecursos;
     private JPanel panelGraficoActividades;
+    private DatePicker dpFechaDesdeRecursos;
+    private DatePicker dpFechaHastaRecursos;
+    private DatePicker dpFechaDesdeActividades;
+    private DatePicker dpFechaHastaActividades;
 
     private EstadisticasRecursosTableModel tableModelRecursos;
     private EstadisticasActividadesTableModel tableModelActividades;
@@ -38,10 +39,12 @@ public class EstadisticasView extends JPanel{
     }
 
     private void initComponents() {
-        txtFechaDesdeRecursos = new JTextField(10);
-        txtFechaDesdeRecursos.setEditable(false);
-        txtJFechaHastaRecursos = new JTextField(10);
-        txtJFechaHastaRecursos.setEditable(false);
+        dpFechaDesdeRecursos = crearDatePicker();
+        dpFechaHastaRecursos = crearDatePicker();
+        dpFechaDesdeRecursos.setDate(LocalDate.now().minusMonths(1));
+        dpFechaHastaRecursos.setDate(LocalDate.now());
+        btnCargarRecursos = new JButton("Cargar");
+        btnCargarRecursos.setIcon(cargarIcono("/icons/check.png"));
 
         tableModelRecursos = new EstadisticasRecursosTableModel();
         tableEstadisticasRecursos = new JTable(tableModelRecursos);
@@ -53,10 +56,12 @@ public class EstadisticasView extends JPanel{
 
         panelGraficoRecursos = new JPanel(new BorderLayout());
 
-        txtFechaDesdeActividades = new JTextField(10);
-        txtFechaDesdeActividades.setEditable(false);
-        txtJFechaHastaActividades = new JTextField(10);
-        txtJFechaHastaActividades.setEditable(false);
+        dpFechaDesdeActividades = crearDatePicker();
+        dpFechaHastaActividades = crearDatePicker();
+        dpFechaDesdeActividades.setDate(LocalDate.now().minusMonths(1));
+        dpFechaHastaActividades.setDate(LocalDate.now());
+        btnCargarActividades = new JButton("Cargar");
+        btnCargarActividades.setIcon(cargarIcono("/icons/check.png"));
 
         tableModelActividades = new EstadisticasActividadesTableModel();
         tableEstadisticasActividades = new JTable(tableModelActividades);
@@ -83,10 +88,10 @@ public class EstadisticasView extends JPanel{
 
         JPanel panelFechas = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelFechas.setBorder(BorderFactory.createTitledBorder("Fechas Desde y Hasta"));
-        panelFechas.add(txtFechaDesdeRecursos);
-        panelFechas.add(btnFechaDesdeRecursos);
-        panelFechas.add(txtJFechaHastaRecursos);
-        panelFechas.add(btnFechaHastaRecursos);
+        panelFechas.add(new JLabel("Desde:"));
+        panelFechas.add(dpFechaDesdeRecursos);
+        panelFechas.add(new JLabel("Hasta:"));
+        panelFechas.add(dpFechaHastaRecursos);
         panelFechas.add(btnCargarRecursos);
 
         JPanel panelTabla = new JPanel(new BorderLayout());
@@ -111,10 +116,10 @@ public class EstadisticasView extends JPanel{
 
         JPanel panelFechas = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelFechas.setBorder(BorderFactory.createTitledBorder("Fechas Desde y Hasta"));
-        panelFechas.add(txtFechaDesdeActividades);
-        panelFechas.add(btnFechaDesdeActividades);
-        panelFechas.add(txtJFechaHastaActividades);
-        panelFechas.add(bntFechaHastaActividades);
+        panelFechas.add(new JLabel("Desde:"));
+        panelFechas.add(dpFechaDesdeActividades);
+        panelFechas.add(new JLabel("Hasta:"));
+        panelFechas.add(dpFechaHastaActividades);
         panelFechas.add(btnCargarActividades);
 
         JPanel panelTabla = new JPanel(new BorderLayout());
@@ -165,14 +170,25 @@ public class EstadisticasView extends JPanel{
         panelGraficoActividades.repaint();
     }
 
+    private ImageIcon cargarIcono(String ruta) {
+        URL url = getClass().getResource(ruta);
+        return (url != null) ? new ImageIcon(url) : null;
+    }
+
     public JButton getBtnCargarRecursos() { return btnCargarRecursos; }
     public JButton getBtnCargarActividades() { return btnCargarActividades; }
-    public JButton getBtnFechaDesdeRecursos() { return btnFechaDesdeRecursos; }
-    public JButton getBtnFechaHastaRecursos() { return btnFechaHastaRecursos; }
-    public JButton getBtnFechaDesdeActividades() { return btnFechaDesdeActividades; }
-    public JButton getBntFechaHastaActividades() { return bntFechaHastaActividades; }
-    public JTextField getTxtFechaDesdeRecursos() { return txtFechaDesdeRecursos; }
-    public JTextField getTxtJFechaHastaRecursos() { return txtJFechaHastaRecursos; }
-    public JTextField getTxtFechaDesdeActividades() { return txtFechaDesdeActividades; }
-    public JTextField getTxtJFechaHastaActividades() { return txtJFechaHastaActividades; }
+    public DatePicker getDpFechaDesdeRecursos() { return dpFechaDesdeRecursos; }
+    public DatePicker getDpFechaHastaRecursos() { return dpFechaHastaRecursos; }
+    public DatePicker getDpFechaDesdeActividades() { return dpFechaDesdeActividades; }
+    public DatePicker getDpFechaHastaActividades() { return dpFechaHastaActividades; }
+
+    private DatePicker crearDatePicker() {
+        DatePicker datePicker = new DatePicker();
+        DatePickerSettings settings = datePicker.getSettings();
+        settings.setLocale(new Locale("es", "CR"));
+        settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));
+        return datePicker;
+    }
+
+
 }

@@ -1,5 +1,7 @@
 package reservas.presentation.reservasP;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import reservas.logic.model.CategoriaRecurso;
 import reservas.logic.model.Recurso;
 import reservas.logic.model.Reserva;
@@ -14,6 +16,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -21,8 +24,7 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
     private JButton btnImprimir;
     private JButton btnExtraer;
     private JTextField txtActividad;
-    private JButton btnFecha;
-    private JTextField txtFecha;
+    private DatePicker dpFecha;
     private JTextField txtHoraInicio;
     private JTextField txtHoraFin;
     private JTable tableMisReservas;
@@ -44,6 +46,8 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
 
         private void initComponents() {
             setLayout(new BorderLayout(10, 10));
+
+            dpFecha = new DatePicker();
 
             // PANEL NORTE: Formulario Nueva Reserva
             JPanel panelNuevaReserva = new JPanel(new GridBagLayout());
@@ -76,18 +80,20 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
             panelNuevaReserva.add(txtActividad, gbc);
 
             // Fila 2: Fecha / Horas
+            DatePickerSettings settings = dpFecha.getSettings();
+            settings.setLocale(new Locale("es", "CR"));
+            settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            // Como es un sistema de reservas, probablemente no tenga sentido reservar en el pasado:
+            settings.setDateRangeLimits(LocalDate.now(), null);
+
             gbc.gridwidth = 1;
             gbc.gridx = 0;
             gbc.gridy = 2;
             panelNuevaReserva.add(new JLabel("Fecha"), gbc);
 
-            JPanel panelFecha = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-            txtFecha = new JTextField(8);
-            btnFecha = new JButton("...");
-            panelFecha.add(txtFecha);
-            panelFecha.add(btnFecha);
             gbc.gridx = 1;
-            panelNuevaReserva.add(panelFecha, gbc);
+            panelNuevaReserva.add(dpFecha, gbc);
 
             gbc.gridx = 2;
             panelNuevaReserva.add(new JLabel("Hora inicio"), gbc);
@@ -181,7 +187,10 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
                 if (controller != null) {
                     try {
                         String act = txtActividad.getText();
-                        LocalDate f = LocalDate.parse(txtFecha.getText());
+                        LocalDate f = dpFecha.getDate();
+                        if (f == null) {
+                            throw new IllegalArgumentException("La fecha es obligatoria");
+                        }
                         LocalTime hIn = LocalTime.parse(cmbHoraInicio.getSelectedItem().toString());
                         LocalTime hFin = LocalTime.parse(cmbHoraFin.getSelectedItem().toString());
                         List<CategoriaRecurso> cats = listCategorias.getSelectedValuesList();
@@ -225,10 +234,6 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
                 }
             });
 
-            btnFecha.addActionListener(e -> {
-                String f = JOptionPane.showInputDialog(this, "Ingrese fecha (AAAA-MM-DD):", txtFecha.getText());
-                if (f != null && !f.isBlank()) txtFecha.setText(f);
-            });
         }
 
         private JComboBox<String> crearComboHoras() {
@@ -277,9 +282,9 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
 
                     // 2. Dejar la fecha en blanco si el modelo la manda nula
                     if (model.getFecha() == null) {
-                        txtFecha.setText("");
+                        dpFecha.clear();
                     } else {
-                        txtFecha.setText(model.getFecha().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        dpFecha.setDate(model.getFecha());
                     }
 
                     // 3. Dejar los ComboBox de hora sin selección (en blanco)

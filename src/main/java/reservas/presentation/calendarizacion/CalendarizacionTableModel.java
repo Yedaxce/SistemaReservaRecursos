@@ -53,9 +53,13 @@ public class CalendarizacionTableModel extends AbstractTableModel {
 
         return reservas.stream()
                 .filter(r -> r.estaActiva() &&
-                        r.getRecursos().stream().anyMatch(rec -> rec.getId().equals(recurso.getId())) &&
+                        r.getRecursos() != null &&
+                        r.getRecursos().stream()
+                                .filter(rec -> rec != null)
+                                .anyMatch(rec -> rec.getId().equals(recurso.getId())) &&
                         !hora.isBefore(r.getHoraInicio()) && hora.isBefore(r.getHoraFin()))
-                .map(r -> r.getActividad() + " - " + r.getFuncionario().getNombre())
+                .map(r -> r.getActividad() + " - " +
+                        (r.getFuncionario() == null ? "Sin funcionario" : r.getFuncionario().getNombre()))
                 .findFirst()
                 .orElse("");
     }
