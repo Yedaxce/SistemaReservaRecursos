@@ -1,6 +1,6 @@
 package reservas.presentation.login;
 
-import reservas.logic.model.Usuario;
+import reservas.logic.Usuario;
 import reservas.presentation.Sesion;
 import reservas.services.UsuarioService;
 

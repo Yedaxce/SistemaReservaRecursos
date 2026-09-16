@@ -3,8 +3,8 @@ package reservas.dao;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import reservas.logic.model.Administrador;
-import reservas.logic.model.Funcionario;
+import reservas.logic.Administrador;
+import reservas.logic.Funcionario;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,10 +1,10 @@
 package reservas.dao;
 
 import jakarta.xml.bind.annotation.*;
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
-import reservas.logic.model.Usuario;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
+import reservas.logic.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package reservas.presentation.funcionarioP;
 
-import reservas.logic.model.Funcionario;
+import reservas.logic.Funcionario;
 import reservas.services.FuncionarioService;
 import reservas.services.GenerarPdfService;
 

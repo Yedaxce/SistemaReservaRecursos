@@ -2,11 +2,11 @@ package reservas.unitTest;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.EstadoReserva;
-import reservas.logic.model.Funcionario;
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.EstadoReserva;
+import reservas.logic.Funcionario;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

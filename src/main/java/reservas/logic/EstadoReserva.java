@@ -1,4 +1,4 @@
-package reservas.logic.model;
+package reservas.logic;
 
 public enum EstadoReserva {
     ACTIVA,

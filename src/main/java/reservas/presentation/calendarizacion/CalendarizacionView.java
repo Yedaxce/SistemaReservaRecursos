@@ -2,7 +2,7 @@ package reservas.presentation.calendarizacion;
 
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
-import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.CategoriaRecurso;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class CalendarizacionView extends JPanel implements PropertyChangeListener {    private JPanel panelPrincipalCalendarizacion;
+public class CalendarizacionView extends JPanel implements PropertyChangeListener {
+    private JPanel panelPrincipalCalendarizacion;
     private JTable tableCalendarizacion;
     private JComboBox comboBoxCategoria;
     private JButton btnCargar;
@@ -34,9 +35,10 @@ public class CalendarizacionView extends JPanel implements PropertyChangeListene
 
         dpFecha = new DatePicker();
         dpFecha.setDate(LocalDate.now());
+        tableCalendarizacion = new JTable();
         DatePickerSettings settings = dpFecha.getSettings();
         settings.setLocale(new Locale("es", "CR"));
-        settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));
+        settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
 
         JPanel panelFiltros = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         panelFiltros.setBorder(BorderFactory.createTitledBorder("Filtros"));
@@ -57,6 +59,9 @@ public class CalendarizacionView extends JPanel implements PropertyChangeListene
         panelFiltros.add(btnImprimir);
         add(panelFiltros, BorderLayout.NORTH);
 
+        comboBoxCategoria.addActionListener(e -> cargarCalendarizacionSeleccionada());
+        dpFecha.addDateChangeListener(e -> cargarCalendarizacionSeleccionada());
+
         tableCalendarizacion.setRowHeight(25);
         tableCalendarizacion.setDefaultRenderer(Object.class, new CalendarizacionCellRenderer());
         tableCalendarizacion.setShowHorizontalLines(true);
@@ -70,9 +75,7 @@ public class CalendarizacionView extends JPanel implements PropertyChangeListene
         // Eventos
         btnCargar.addActionListener(e -> {
             if (controller != null) {
-                CategoriaRecurso cat = (CategoriaRecurso) comboBoxCategoria.getSelectedItem();
-                LocalDate fecha = dpFecha.getDate();
-                controller.cargarCalendarizacion(fecha, cat);
+                cargarCalendarizacionSeleccionada();
             }
         });
 
@@ -114,12 +117,27 @@ public class CalendarizacionView extends JPanel implements PropertyChangeListene
                 for (CategoriaRecurso cat : model.getCategorias()) {
                     comboBoxCategoria.addItem(cat);
                 }
+                if (comboBoxCategoria.getItemCount() > 0) {
+                    comboBoxCategoria.setSelectedIndex(0);
+                }
                 break;
 
             case CalendarizacionModel.TABLA:
                 CalendarizacionTableModel tableModel = new CalendarizacionTableModel(model.getRecursos(), model.getReservas());
                 tableCalendarizacion.setModel(tableModel);
                 break;
+        }
+    }
+
+    private void cargarCalendarizacionSeleccionada() {
+        if (controller == null) {
+            return;
+        }
+
+        CategoriaRecurso categoria = (CategoriaRecurso) comboBoxCategoria.getSelectedItem();
+        LocalDate fecha = dpFecha.getDate();
+        if (categoria != null && fecha != null) {
+            controller.cargarCalendarizacion(fecha, categoria);
         }
     }
 }

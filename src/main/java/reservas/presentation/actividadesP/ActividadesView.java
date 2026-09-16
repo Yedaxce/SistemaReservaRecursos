@@ -34,7 +34,7 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
         dpFecha.setDate(LocalDate.now());
         DatePickerSettings settings = dpFecha.getSettings();
         settings.setLocale(new Locale("es", "CR"));
-        settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));
+        settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
 
         // Panel Filtros (Norte)
         JPanel panelFiltros = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));

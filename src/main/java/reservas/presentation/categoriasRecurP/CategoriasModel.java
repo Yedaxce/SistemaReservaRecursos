@@ -1,6 +1,6 @@
 package reservas.presentation.categoriasRecurP;
 
-import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.CategoriaRecurso;
 import reservas.presentation.AbstractModel;
 
 import java.util.ArrayList;

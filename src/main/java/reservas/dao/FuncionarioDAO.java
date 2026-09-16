@@ -1,7 +1,7 @@
 package reservas.dao;
 
-import reservas.logic.model.Funcionario;
-import reservas.logic.model.Usuario;
+import reservas.logic.Funcionario;
+import reservas.logic.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

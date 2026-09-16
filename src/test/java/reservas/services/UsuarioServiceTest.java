@@ -3,7 +3,7 @@ package reservas.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import reservas.logic.model.Usuario;
+import reservas.logic.Usuario;
 
 import static org.junit.jupiter.api.Assertions.*;
 

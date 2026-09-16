@@ -1,6 +1,6 @@
 package reservas.dao;
 
-import reservas.logic.model.Reserva;
+import reservas.logic.Reserva;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package reservas.presentation.calendarizacion;
 
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 
 import javax.swing.table.AbstractTableModel;
 import java.time.LocalTime;
@@ -52,11 +52,15 @@ public class CalendarizacionTableModel extends AbstractTableModel {
         Recurso recurso = recursos.get(col - 1);
 
         return reservas.stream()
-                .filter(r -> r.estaActiva() &&
+                .filter(r -> r != null &&
+                        r.estaActiva() &&
                         r.getRecursos() != null &&
+                        r.getHoraInicio() != null &&
+                        r.getHoraFin() != null &&
                         r.getRecursos().stream()
-                                .filter(rec -> rec != null)
-                                .anyMatch(rec -> rec.getId().equals(recurso.getId())) &&
+                                .anyMatch(rec -> rec != null &&
+                                        rec.getId() != null &&
+                                        rec.getId().equals(recurso.getId())) &&
                         !hora.isBefore(r.getHoraInicio()) && hora.isBefore(r.getHoraFin()))
                 .map(r -> r.getActividad() + " - " +
                         (r.getFuncionario() == null ? "Sin funcionario" : r.getFuncionario().getNombre()))

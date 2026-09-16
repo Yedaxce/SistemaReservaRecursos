@@ -3,7 +3,7 @@ package reservas.services;
 import reservas.dao.Data;
 import reservas.dao.UsuarioDAO;
 import reservas.dao.XmlPersister;
-import reservas.logic.model.Usuario;
+import reservas.logic.Usuario;
 
 public class UsuarioService {
     private final UsuarioDAO usuarioDAO;

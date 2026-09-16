@@ -1,4 +1,4 @@
-package reservas.logic.model;
+package reservas.logic;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlID;

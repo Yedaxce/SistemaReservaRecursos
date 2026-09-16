@@ -3,8 +3,8 @@ package reservas.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Funcionario;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Funcionario;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

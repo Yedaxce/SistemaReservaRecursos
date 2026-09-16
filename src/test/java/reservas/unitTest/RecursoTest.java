@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.BeforeEach;
 
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Recurso;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Recurso;
 
 import static org.junit.jupiter.api.Assertions.*;
 

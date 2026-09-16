@@ -1,6 +1,6 @@
 package reservas.presentation.actividadesP;
 
-import reservas.logic.model.Reserva;
+import reservas.logic.Reserva;
 import reservas.presentation.AbstractModel;
 
 import java.time.LocalDate;

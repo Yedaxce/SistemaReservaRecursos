@@ -1,6 +1,6 @@
 package reservas.presentation.recursosP;
 
-import reservas.logic.model.Recurso;
+import reservas.logic.Recurso;
 import reservas.presentation.AbstractTableModel;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package reservas.presentation.reservasP;
 
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Funcionario;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Funcionario;
 import reservas.services.*;
 
 import java.io.IOException;

@@ -2,8 +2,8 @@ package reservas.unitTest;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import reservas.logic.model.Funcionario;
-import reservas.logic.model.Rol;
+import reservas.logic.Funcionario;
+import reservas.logic.Rol;
 
 import static org.junit.jupiter.api.Assertions.*;
 

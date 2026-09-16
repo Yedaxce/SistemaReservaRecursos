@@ -1,6 +1,6 @@
 package reservas.dao;
 
-import reservas.logic.model.CategoriaRecurso;
+import reservas.logic.CategoriaRecurso;
 
 import java.util.ArrayList;
 import java.util.List;

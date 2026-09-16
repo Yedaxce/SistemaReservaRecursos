@@ -5,9 +5,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import reservas.dao.ReservaDAO;
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 
 import java.time.LocalDate;
 import java.time.temporal.WeekFields;

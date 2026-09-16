@@ -1,8 +1,8 @@
 package reservas.presentation.calendarizacion;
 
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 import reservas.presentation.AbstractModel;
 
 import java.time.LocalDate;

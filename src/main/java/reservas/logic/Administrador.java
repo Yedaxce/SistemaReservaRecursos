@@ -1,4 +1,4 @@
-package reservas.logic.model;
+package reservas.logic;
 
 //el administrador no tiene otros atributos ni metros propios
 public class Administrador extends Usuario {

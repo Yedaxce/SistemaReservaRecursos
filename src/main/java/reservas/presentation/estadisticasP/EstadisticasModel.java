@@ -1,7 +1,7 @@
 package reservas.presentation.estadisticasP;
 
-import reservas.logic.model.Recurso;
-import reservas.logic.model.Reserva;
+import reservas.logic.Recurso;
+import reservas.logic.Reserva;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

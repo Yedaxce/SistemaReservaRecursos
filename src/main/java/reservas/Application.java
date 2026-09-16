@@ -1,31 +1,37 @@
 package reservas;
 
-import reservas.logic.model.Administrador;
-import reservas.logic.model.Funcionario;
-import reservas.logic.model.Reserva;
-import reservas.logic.model.Usuario;
+import reservas.logic.Funcionario;
+import reservas.logic.Reserva;
+import reservas.logic.Usuario;
 import reservas.presentation.Sesion;
 import reservas.presentation.actividadesP.ActividadesController;
 import reservas.presentation.actividadesP.ActividadesModel;
 import reservas.presentation.actividadesP.ActividadesView;
+
 import reservas.presentation.calendarizacion.CalendarizacionController;
 import reservas.presentation.calendarizacion.CalendarizacionModel;
 import reservas.presentation.calendarizacion.CalendarizacionView;
+
 import reservas.presentation.categoriasRecurP.CategoriasModel;
 import reservas.presentation.categoriasRecurP.CategoriasView;
 import reservas.presentation.categoriasRecurP.CategoriasController;
+
 import reservas.presentation.estadisticasP.EstadisticasController;
 import reservas.presentation.estadisticasP.EstadisticasModel;
 import reservas.presentation.estadisticasP.EstadisticasView;
+
 import reservas.presentation.funcionarioP.FuncionarioController;
 import reservas.presentation.funcionarioP.FuncionarioModel;
 import reservas.presentation.funcionarioP.FuncionarioView;
+
 import reservas.presentation.login.LoginController;
 import reservas.presentation.login.LoginModel;
 import reservas.presentation.login.LoginView;
+
 import reservas.presentation.recursosP.RecursosController;
 import reservas.presentation.recursosP.RecursosModel;
 import reservas.presentation.recursosP.RecursosView;
+
 import reservas.presentation.reservasP.ReservasController;
 import reservas.presentation.reservasP.ReservasModel;
 import reservas.presentation.reservasP.ReservasView;
@@ -69,6 +75,7 @@ public class Application {
         CategoriasView categoriasView = new CategoriasView();
         CategoriasModel categoriasModel = new CategoriasModel();
         CategoriasController categoriasController = new CategoriasController(categoriasView, categoriasModel);
+
         //      Pestaña Recursos
         RecursosView recursosView = new RecursosView();
         RecursosModel recursosModel = new RecursosModel();

@@ -1,8 +1,8 @@
 package reservas.presentation.reservasP;
 
-import reservas.logic.model.CategoriaRecurso;
-import reservas.logic.model.Funcionario;
-import reservas.logic.model.Reserva;
+import reservas.logic.CategoriaRecurso;
+import reservas.logic.Funcionario;
+import reservas.logic.Reserva;
 import reservas.presentation.AbstractModel;
 
 import java.time.LocalDate;
