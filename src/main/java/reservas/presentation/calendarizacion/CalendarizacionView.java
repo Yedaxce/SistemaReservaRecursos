@@ -50,10 +50,10 @@ public class CalendarizacionView extends JPanel implements PropertyChangeListene
         comboBoxCategoria = new JComboBox<>();
         panelFiltros.add(comboBoxCategoria);
 
-        btnCargar = new JButton("Cargar");
+        btnCargar.setIcon(cargarIcono("/icons/check.png"));
         panelFiltros.add(btnCargar);
 
-        btnImprimir = new JButton("Imprimir");
+        btnImprimir.setIcon(cargarIcono("/icons/pdf.png"));
         panelFiltros.add(btnImprimir);
         add(panelFiltros, BorderLayout.NORTH);
 

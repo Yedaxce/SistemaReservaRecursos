@@ -43,10 +43,10 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
         panelFiltros.add(new JLabel("Fecha de referencia:"));
         panelFiltros.add(dpFecha);
 
-        btnCargar = new JButton("Cargar");
+        btnCargar.setIcon(cargarIcono("/icons/check.png"));
         panelFiltros.add(btnCargar);
 
-        btnImprimir = new JButton("Imprimir");
+        btnImprimir.setIcon(cargarIcono("/icons/pdf.png"));
         panelFiltros.add(btnImprimir);
 
         add(panelFiltros, BorderLayout.NORTH);
@@ -100,6 +100,11 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
     public void setModel(ActividadesModel model) {
         this.model = model;
         model.addPropertyChangeListener(this);
+    }
+
+    private ImageIcon cargarIcono(String ruta) {
+        URL url = getClass().getResource(ruta);
+        return (url != null) ? new ImageIcon(url) : null;
     }
 
     @Override
