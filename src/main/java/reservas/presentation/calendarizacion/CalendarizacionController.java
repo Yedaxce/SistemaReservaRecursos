@@ -36,6 +36,8 @@ public class CalendarizacionController {
         model.setCategorias(categoriaService.listarTodos());
     }
 
+
+
     public void cargarCalendarizacion(LocalDate fecha, CategoriaRecurso categoria) {
         if (fecha == null || categoria == null) return;
 
@@ -46,6 +48,10 @@ public class CalendarizacionController {
         List<Reserva> reservas = reservaService.buscarPorFechaYCategoria(fecha, categoria.getId());
 
         model.setDatosTabla(recursos, reservas);
+    }
+
+    public void cargarCategorias() {
+        model.setCategorias(categoriaService.listarTodos());
     }
 
     public void imprimirReporte(String ruta) throws IOException {
@@ -68,4 +74,7 @@ public class CalendarizacionController {
 
         pdfService.generarPdf("Calendarización de Recursos", encabezados, filas, ruta);
     }
+
+
+
 }

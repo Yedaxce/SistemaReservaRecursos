@@ -8,7 +8,7 @@
         </usuario>
         <usuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="funcionario">
             <id>jp1</id>
-            <clave>111</clave>
+            <clave>1</clave>
             <rol>FUNCIONARIO</rol>
             <nombre>Juan Perez</nombre>
             <telefono>3323</telefono>

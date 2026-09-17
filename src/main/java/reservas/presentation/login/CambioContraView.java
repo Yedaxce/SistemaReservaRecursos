@@ -21,21 +21,18 @@ public class CambioContraView extends JDialog {
         setLocationRelativeTo(parent);
         setResizable(false);
 
-        // BOTÓN CANCELAR (X Roja)
         btnCheck.addActionListener(e -> {
             this.aceptado = true;
             setVisible(false);
             dispose();
         });
 
-        // BOTÓN ACEPTAR (Check Verde)
         btnCancelar.addActionListener(e -> {
             this.aceptado = false;
             setVisible(false);
             dispose();
         });
 
-        // Cierre manual desde el marco superior (X de la ventana)
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override

@@ -80,7 +80,6 @@ public class RecursosView implements PropertyChangeListener {
                 JOptionPane.showMessageDialog(JPPrincipalRecursos, "Recurso actualizado correctamente.");
             }
         } catch (Exception ex) {
-            // Cubre validaciones del modelo (Recurso) y errores del Service (ID duplicado, etc.)
             JOptionPane.showMessageDialog(JPPrincipalRecursos, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -126,8 +125,6 @@ public class RecursosView implements PropertyChangeListener {
         this.model = model;
         model.addPropertyChangeListener(this);
     }
-
-    // para agregar la pastaña con JTabbedPane desde Application.java
     public JPanel getPanel() {
         return JPPrincipalRecursos;
     }
@@ -165,7 +162,7 @@ public class RecursosView implements PropertyChangeListener {
                     idRecursoFld.setText(r.getId());
                     descipRecursoFld.setText(r.getDescripcion());
                     categoriasRecurBox.setSelectedItem(r.getCategoria());
-                    idRecursoFld.setEditable(false); // el ID no cambia al editar
+                    idRecursoFld.setEditable(false);
                 }
                 break;
             }

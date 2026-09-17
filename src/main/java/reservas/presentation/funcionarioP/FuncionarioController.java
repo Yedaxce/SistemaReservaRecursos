@@ -19,53 +19,53 @@ public class FuncionarioController {
         this.service = new FuncionarioService();
         this.pdfService = new GenerarPdfService();
         view.setController(this);
-        view.setModel(model);          // aquí la View se suscribe como observador
-        model.setLista(service.listarTodos()); // carga inicial de la tabla
+        view.setModel(model);
+        model.setLista(service.listarTodos());
     }
 
-    /** Crear un funcionario nuevo. */
     public void crear(Funcionario funcionario) throws Exception {
-        service.crear(funcionario);              // puede lanzar IllegalArgumentException (ID duplicado)
+        service.crear(funcionario);
         model.setActual(null);
         model.setLista(service.listarTodos());
     }
 
-    /** Actualizar un funcionario existente (nombre/telefono/clave). */
     public void actualizar(Funcionario funcionario) throws Exception {
         service.actualizar(funcionario);
         model.setActual(null);
         model.setLista(service.listarTodos());
     }
 
-    /** Elimina por id (llamado tras confirmar en la Vista). */
     public void eliminar(String id) {
         service.eliminar(id);
         model.setActual(null);
         model.setLista(service.listarTodos());
     }
 
-    /** Limpia el formulario -> vuelve a modo "nuevo". */
     public void limpiar() {
         model.setActual(null);
     }
 
-    /** El usuario hizo clic/seleccionó una fila de la tabla -> carga el formulario. */
     public void seleccionar(int row) {
         if (row >= 0 && row < model.getLista().size()) {
             model.setActual(model.getLista().get(row));
         }
     }
 
-    /** Filtra por nombre; si está vacío, vuelve a listar todos. */
-    public void buscar(String nombre) {
-        if (nombre == null || nombre.isBlank()) {
+    public void buscar(String id, String nombre) {
+        boolean tieneId = id != null && !id.isBlank();
+        boolean tieneNombre = nombre != null && !nombre.isBlank();
+
+        if (!tieneId && !tieneNombre) {
             model.setLista(service.listarTodos());
         } else {
-            model.setLista(service.buscarPorNombre(nombre));
+            List<Funcionario> resultados = service.listarTodos().stream()
+                    .filter(f -> (!tieneId || f.getId().toLowerCase().contains(id.toLowerCase()))
+                            && (!tieneNombre || f.getNombre().toLowerCase().contains(nombre.toLowerCase())))
+                    .toList();
+            model.setLista(resultados);
         }
     }
 
-    /**Generar un reporte PDF*/
     public void imprimir(String ruta) throws IOException {
         String[] encabezados = {"Id", "Nombre", "Teléfono"};
         List<Object[]> filas = model.getLista().stream()

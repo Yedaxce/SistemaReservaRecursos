@@ -44,7 +44,7 @@ public class ActividadesController {
         //Obtiene todas las reservas registradas
         List<Reserva> todas = reservaService.listarTodas();
 
-        //Filtra únicamente las reservas dentro del rango MONDAY - SUNDAY de la semana seleccionada
+        //Filtra inicamente las reservas dentro del rango MONDAY - SUNDAY de la semana seleccionada
         List<Reserva> reservasSemana = todas.stream()
                 .filter(r -> r.estaActiva())
                 .filter(r -> !r.getFecha().isBefore(inicioSemana) && !r.getFecha().isAfter(finSemana))

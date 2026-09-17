@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FuncionarioModel extends AbstractModel {
 
-    private Funcionario actual;      // null = no hay ninguno seleccionado (modo "nuevo")
+    private Funcionario actual;
     private List<Funcionario> lista = new ArrayList<>();
 
     public static final String ACTUAL = "actual";
@@ -20,7 +20,7 @@ public class FuncionarioModel extends AbstractModel {
 
     public void setActual(Funcionario current) {
         this.actual = current;
-        firePropertyChange(ACTUAL); // "evento": avisa a quien esté escuchando (la View)
+        firePropertyChange(ACTUAL);
     }
 
     public List<Funcionario> getLista() {

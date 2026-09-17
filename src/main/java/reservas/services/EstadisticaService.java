@@ -22,12 +22,8 @@ public class EstadisticaService {
     }
 
 
-    // 1. MÉTODOS DE LÓGICA DE DATOS (Retorna los mapas estándar para tablas)
-
-
-    /**
-     * Calcula la cantidad de usos por categoría de recurso en un período dado.
-     */
+    // 1. MÉTODOS DE LÓGICA DE DATOS
+    /**Calcula la cantidad de usos por categoría de recurso en un período dado.*/
     public Map<CategoriaRecurso, Integer> recursosUsadosEnPeriodo(LocalDate desde, LocalDate hasta) {
         Map<CategoriaRecurso, Integer> resultado = new HashMap<>();
 
@@ -51,9 +47,7 @@ public class EstadisticaService {
         return resultado;
     }
 
-    /**
-     * Cuenta cantidad de actividades reservadas por semanaa
-     */
+    /**Cuenta cantidad de actividades reservadas por semanaa*/
     public Map<String, Integer> actividadesPorSemana(LocalDate desde, LocalDate hasta) {
         Map<String, Integer> resultado = new TreeMap<>(); // Orden cronológico automático
 
@@ -78,11 +72,7 @@ public class EstadisticaService {
     }
 
     // 2. MÉTODOS DE GENERACIÓN DE GRÁFICOS
-
-
-    /**
-     * Genera el objeto JFreeChart de Barras para la cantidad de Recursos Usados.
-     */
+    /** Genera el objeto JFreeChart de Barras para la cantidad de Recursos Usados.*/
     public JFreeChart generarGraficoRecursos(LocalDate desde, LocalDate hasta) {
         Map<CategoriaRecurso, Integer> datos = recursosUsadosEnPeriodo(desde, hasta);
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -103,9 +93,6 @@ public class EstadisticaService {
         );
     }
 
-    /**
-     * Genera obj JFreeChart de barras para las actvidades realizadas por semana
-     */
     public JFreeChart generarGraficoActividades(LocalDate desde, LocalDate hasta) {
         Map<String, Integer> datos = actividadesPorSemana(desde, hasta);
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();

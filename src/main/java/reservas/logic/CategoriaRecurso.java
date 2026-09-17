@@ -7,7 +7,6 @@ import java.util.Objects;
 
 /*agrupa los recurso del mismo tipo*/
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CategoriaRecurso {
 
@@ -20,7 +19,6 @@ public class CategoriaRecurso {
     }
 
     public CategoriaRecurso(String id, String descripcion) {
-        //validaciones
         if (id == null || id.isBlank()) {
             throw new IllegalArgumentException("Sin id asignado a la categoria");
         }
@@ -41,7 +39,6 @@ public class CategoriaRecurso {
 
     public void setDescripcion(String descripcion) {
         if (descripcion == null || descripcion.isBlank()) {
-            //validacion
             throw new IllegalArgumentException("Descripción vacía");
         }
         this.descripcion = descripcion;

@@ -26,12 +26,16 @@ public class RecursosController {
         this.pdfService = new GenerarPdfService();
         view.setController(this);
         view.setModel(model);
-        model.setCategorias(categoriaService.listarTodos()); // llena los combos
-        model.setLista(service.listarTodos());   // carga inicial de la tabla
+        model.setCategorias(categoriaService.listarTodos());
+        model.setLista(service.listarTodos());
+    }
+
+    public void cargarCategorias() {
+        model.setCategorias(categoriaService.listarTodos());
     }
 
     public void crear(Recurso r) throws Exception {
-        service.crear(r);  // IllegalArgumentException (ID duplicado)
+        service.crear(r);
         model.setActual(null);
         model.setLista(service.listarTodos());
     }
@@ -58,17 +62,10 @@ public class RecursosController {
         }
     }
 
-    /**
-     * Filtra por categoría (usa el DAO/Service) y, si además se escribió texto
-     * en el campo de descripción, refina el resultado en memoria --
-     * RecursoService no tiene un buscarPorDescripcion()
-     * en caso de implementarlo borrarlo aqui.
-     */
-
 
     public void buscar(String descripcion, CategoriaRecurso categoria) {
         if (categoria == null) {
-            // Defensivo: solo pasaría si aún no hay ninguna categoría cargada.
+            // Solo pasa si no hay ninguna categoría cargada
             model.setLista(new ArrayList<>());
             return;
         }
@@ -81,7 +78,6 @@ public class RecursosController {
         }
     }
 
-    /** Genera el PDF con la lista de Recursos actualmente cargada en el Model. */
     public void imprimir(String rutaSalida) throws IOException {
         String[] encabezados = {"Id", "Descripción", "Categoría"};
         List<Object[]> filas = model.getLista().stream()

@@ -36,7 +36,7 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
         settings.setLocale(new Locale("es", "CR"));
         settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
 
-        // Panel Filtros (Norte)
+        // Panel Filtros
         JPanel panelFiltros = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         panelFiltros.setBorder(BorderFactory.createTitledBorder("Semana"));
 
@@ -44,16 +44,14 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
         panelFiltros.add(dpFecha);
 
         btnCargar = new JButton("Cargar");
-        btnCargar.setIcon(cargarIcono("/icons/check.png"));
         panelFiltros.add(btnCargar);
 
         btnImprimir = new JButton("Imprimir");
-        btnImprimir.setIcon(cargarIcono("/icons/pdf.png"));
         panelFiltros.add(btnImprimir);
 
         add(panelFiltros, BorderLayout.NORTH);
 
-        // Tabla con JScrollPane (Centro)
+        // Tabla con JScrollPane
         tableActividades = new JTable();
         tableActividades.setRowHeight(25);
         tableActividades.setDefaultRenderer(Object.class, new ActividadesCellRenderer());
@@ -66,7 +64,7 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
         JScrollPanel.setBorder(BorderFactory.createTitledBorder("Actividades semanales"));
         add(JScrollPanel, BorderLayout.CENTER);
 
-        // Eventos
+
         btnCargar.addActionListener(e -> {
             if (controller != null) {
             LocalDate fecha = dpFecha.getDate();
@@ -93,11 +91,6 @@ public class ActividadesView extends JPanel implements PropertyChangeListener {
             }
         });
 
-    }
-
-    private ImageIcon cargarIcono(String ruta) {
-        URL url = getClass().getResource(ruta);
-        return (url != null) ? new ImageIcon(url) : null;
     }
 
     public void setController(ActividadesController controller) {

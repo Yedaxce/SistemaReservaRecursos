@@ -38,7 +38,7 @@ public class FuncionarioView implements PropertyChangeListener {
 
     private void registrarEventos() {
         buscarBtn.addActionListener(e ->
-                controller.buscar(buscarNombreFld.getText().trim()));
+                controller.buscar(buscarIdFld.getText().trim(), buscarNombreFld.getText().trim()));
 
         guardarBtn.addActionListener(e -> onGuardar());
 
@@ -61,7 +61,6 @@ public class FuncionarioView implements PropertyChangeListener {
     private void onGuardar() {
         try {
             boolean esNuevo = (model.getActual() == null);
-            // ⚠ Construye el Funcionario leyendo tus campos reales del formulario
             Funcionario f = new Funcionario(
                     idAddFld.getText().trim(),
                     new String(claveAddFld.getPassword()),
@@ -118,7 +117,7 @@ public class FuncionarioView implements PropertyChangeListener {
 
     public void setModel(FuncionarioModel model) {
         this.model = model;
-        model.addPropertyChangeListener(this); // la Vista se vuelve "observadora" del Model
+        model.addPropertyChangeListener(this);
     }
 
     public JPanel getPanel() {

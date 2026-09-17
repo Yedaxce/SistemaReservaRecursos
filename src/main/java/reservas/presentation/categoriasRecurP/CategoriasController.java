@@ -53,7 +53,6 @@ public class CategoriasController {
         }
     }
 
-    // buscarPorDescripcion ya existe en el Service
     public void buscar(String descripcion) {
         if (descripcion == null || descripcion.isBlank()) {
             model.setLista(service.listarTodos());
@@ -62,7 +61,6 @@ public class CategoriasController {
         }
     }
 
-    /** Genera el PDF con la lista de Categorías actualmente cargada en el Model. */
     public void imprimir(String rutaSalida) throws IOException {
         String[] encabezados = {"Id", "Descripción"};
         List<Object[]> filas = model.getLista().stream()

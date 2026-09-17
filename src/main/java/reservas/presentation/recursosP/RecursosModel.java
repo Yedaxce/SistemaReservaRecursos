@@ -42,4 +42,6 @@ public class RecursosModel extends AbstractModel {
         this.categorias = categorias;
         firePropertyChange(CATEGORIAS);
     }
+
+
 }

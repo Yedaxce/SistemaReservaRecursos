@@ -25,7 +25,7 @@ public class ReservaService {
     }
 
     public List<Reserva> listarTodas() {
-        return reservaDAO.listarTodos(); // Asegúrate de tener este método en ReservaDAO
+        return reservaDAO.listarTodos();
     }
 
     public List<Reserva> listarPorFuncionario(String idFuncionario) {

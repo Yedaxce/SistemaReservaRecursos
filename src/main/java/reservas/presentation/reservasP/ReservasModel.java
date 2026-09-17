@@ -73,4 +73,6 @@ public class ReservasModel extends AbstractModel {
         this.categoriasSeleccionadas = seleccionadas;
         firePropertyChange(DATOS_FORMULARIO);
     }
+
+
 }

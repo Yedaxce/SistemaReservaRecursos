@@ -21,7 +21,6 @@ public class EstadisticasController {
     }
 
     private void initListeners() {
-        // Eventos para cargar estadísticas
         this.view.getBtnCargarRecursos().addActionListener(e -> cargarEstadisticasRecursos());
         this.view.getBtnCargarActividades().addActionListener(e -> cargarEstadisticasActividades());
 

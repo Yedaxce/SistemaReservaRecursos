@@ -43,8 +43,6 @@ public class EstadisticasView extends JPanel{
         dpFechaHastaRecursos = crearDatePicker();
         dpFechaDesdeRecursos.setDate(LocalDate.now().minusMonths(1));
         dpFechaHastaRecursos.setDate(LocalDate.now());
-        btnCargarRecursos = new JButton("Cargar");
-        btnCargarRecursos.setIcon(cargarIcono("/icons/check.png"));
 
         tableModelRecursos = new EstadisticasRecursosTableModel();
         tableEstadisticasRecursos = new JTable(tableModelRecursos);
@@ -60,8 +58,6 @@ public class EstadisticasView extends JPanel{
         dpFechaHastaActividades = crearDatePicker();
         dpFechaDesdeActividades.setDate(LocalDate.now().minusMonths(1));
         dpFechaHastaActividades.setDate(LocalDate.now());
-        btnCargarActividades = new JButton("Cargar");
-        btnCargarActividades.setIcon(cargarIcono("/icons/check.png"));
 
         tableModelActividades = new EstadisticasActividadesTableModel();
         tableEstadisticasActividades = new JTable(tableModelActividades);
@@ -168,11 +164,6 @@ public class EstadisticasView extends JPanel{
         panelGraficoActividades.add(new ChartPanel(chart), BorderLayout.CENTER);
         panelGraficoActividades.revalidate();
         panelGraficoActividades.repaint();
-    }
-
-    private ImageIcon cargarIcono(String ruta) {
-        URL url = getClass().getResource(ruta);
-        return (url != null) ? new ImageIcon(url) : null;
     }
 
     public JButton getBtnCargarRecursos() { return btnCargarRecursos; }

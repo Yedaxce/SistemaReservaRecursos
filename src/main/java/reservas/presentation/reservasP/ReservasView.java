@@ -49,14 +49,13 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
 
             dpFecha = new DatePicker();
 
-            // PANEL NORTE: Formulario Nueva Reserva
+            //Formulario Nueva Reserva
             JPanel panelNuevaReserva = new JPanel(new GridBagLayout());
             panelNuevaReserva.setBorder(BorderFactory.createTitledBorder("Nueva reserva"));
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.insets = new Insets(4, 4, 4, 4);
             gbc.fill = GridBagConstraints.HORIZONTAL;
 
-            // Fila 0: Frase + Botón Extraer
             gbc.gridx = 0;
             gbc.gridy = 0;
             panelNuevaReserva.add(new JLabel("Frase"), gbc);
@@ -70,7 +69,7 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
             gbc.gridwidth = 1;
             panelNuevaReserva.add(btnExtraer, gbc);
 
-            // Fila 1: Actividad
+            //Actividad
             gbc.gridx = 0;
             gbc.gridy = 1;
             panelNuevaReserva.add(new JLabel("Actividad"), gbc);
@@ -79,12 +78,11 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
             gbc.gridwidth = 4;
             panelNuevaReserva.add(txtActividad, gbc);
 
-            // Fila 2: Fecha / Horas
+            //Fecha / Horas
             DatePickerSettings settings = dpFecha.getSettings();
             settings.setLocale(new Locale("es", "CR"));
             settings.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-            // Como es un sistema de reservas, probablemente no tenga sentido reservar en el pasado:
             settings.setDateRangeLimits(LocalDate.now(), null);
 
             gbc.gridwidth = 1;
@@ -101,7 +99,7 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
             gbc.gridx = 3;
             panelNuevaReserva.add(cmbHoraInicio, gbc);
 
-            // Fila 3: Horas Fin
+            //Horas Fin
             gbc.gridx = 2;
             gbc.gridy = 3;
             panelNuevaReserva.add(new JLabel("Hora fin"), gbc);
@@ -109,7 +107,7 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
             gbc.gridx = 3;
             panelNuevaReserva.add(cmbHoraFin, gbc);
 
-            // Fila 4: Lista Categorías
+            //Lista Categorías
             gbc.gridx = 0;
             gbc.gridy = 4;
             panelNuevaReserva.add(new JLabel("Categorías"), gbc);
@@ -121,7 +119,7 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
             gbc.gridwidth = 3;
             panelNuevaReserva.add(scrollCat, gbc);
 
-            // Fila 5: Botones Acción Formulario
+            //Botones Acción Formulario
             JPanel panelBotonesForm = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
             panelBotonesForm.add(btnReservar);
             panelBotonesForm.add(btnCancelar);
@@ -134,7 +132,7 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
 
             add(panelNuevaReserva, BorderLayout.NORTH);
 
-            // PANEL CENTRO: Mis Reservas (Tabla)
+            //Mis Reservas (Tabla)
             JPanel panelTabla = new JPanel(new BorderLayout(5, 5));
             panelTabla.setBorder(BorderFactory.createTitledBorder("Mis reservas"));
 
@@ -151,7 +149,7 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
 
             add(panelTabla, BorderLayout.CENTER);
 
-            // EVENTOS
+            //EVENTOS
             tableMisReservas.getSelectionModel().addListSelectionListener(e -> {
                 if (!e.getValueIsAdjusting() && tableMisReservas.getSelectedRow() != -1) {
                     int fila = tableMisReservas.getSelectedRow();
@@ -244,11 +242,6 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
             return combo;
         }
 
-        private ImageIcon cargarIcono(String ruta) {
-            URL url = getClass().getResource(ruta);
-            return (url != null) ? new ImageIcon(url) : null;
-        }
-
         public void mostrarMensajeInfo(String msj) {
             JOptionPane.showMessageDialog(this, msj, "Información", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -276,18 +269,15 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
                     break;
 
                 case ReservasModel.DATOS_FORMULARIO:
-                    // 1. Limpiar campos de texto
                     txtFrase.setText("");
                     txtActividad.setText(model.getActividad());
 
-                    // 2. Dejar la fecha en blanco si el modelo la manda nula
                     if (model.getFecha() == null) {
                         dpFecha.clear();
                     } else {
                         dpFecha.setDate(model.getFecha());
                     }
 
-                    // 3. Dejar los ComboBox de hora sin selección (en blanco)
                     if (model.getHoraInicio() == null) {
                         cmbHoraInicio.setSelectedIndex(-1);
                     } else {
@@ -300,7 +290,6 @@ public class ReservasView extends JPanel implements PropertyChangeListener {
                         cmbHoraFin.setSelectedItem(model.getHoraFin().toString());
                     }
 
-                    // 5. Manejo de deselección del JList de categorías
                     if (model.getCategoriasSeleccionadas() == null || model.getCategoriasSeleccionadas().isEmpty()) {
                         listCategorias.clearSelection();
                     } else {

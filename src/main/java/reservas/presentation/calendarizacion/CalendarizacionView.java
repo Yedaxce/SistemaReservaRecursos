@@ -51,11 +51,9 @@ public class CalendarizacionView extends JPanel implements PropertyChangeListene
         panelFiltros.add(comboBoxCategoria);
 
         btnCargar = new JButton("Cargar");
-        btnCargar.setIcon(cargarIcono("/icons/check.png"));
         panelFiltros.add(btnCargar);
 
         btnImprimir = new JButton("Imprimir");
-        btnImprimir.setIcon(cargarIcono("/icons/pdf.png"));
         panelFiltros.add(btnImprimir);
         add(panelFiltros, BorderLayout.NORTH);
 
@@ -112,20 +110,26 @@ public class CalendarizacionView extends JPanel implements PropertyChangeListene
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
-            case CalendarizacionModel.CATEGORIAS:
-                comboBoxCategoria.removeAllItems();
+            case CalendarizacionModel.CATEGORIAS: {
+                DefaultComboBoxModel<CategoriaRecurso> comboBoxModel = new DefaultComboBoxModel<>();
+
                 for (CategoriaRecurso cat : model.getCategorias()) {
-                    comboBoxCategoria.addItem(cat);
+                    comboBoxModel.addElement(cat);
                 }
+
+                comboBoxCategoria.setModel(comboBoxModel);
+
                 if (comboBoxCategoria.getItemCount() > 0) {
                     comboBoxCategoria.setSelectedIndex(0);
                 }
                 break;
+            }
 
-            case CalendarizacionModel.TABLA:
+            case CalendarizacionModel.TABLA: {
                 CalendarizacionTableModel tableModel = new CalendarizacionTableModel(model.getRecursos(), model.getReservas());
                 tableCalendarizacion.setModel(tableModel);
                 break;
+            }
         }
     }
 

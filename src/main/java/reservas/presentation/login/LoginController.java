@@ -45,9 +45,7 @@ public class LoginController {
         }
 
         CambioContraView dialog = new CambioContraView(view);
-        dialog.setVisible(true); // La ejecución se pausa aquí hasta que se cierre el diálogo
-
-        // SI CANCELÓ, SALE INMEDIATAMENTE (Sin ventanas emergentes ni validaciones)
+        dialog.setVisible(true);
         if (!dialog.isAceptado()) {
             return;
         }

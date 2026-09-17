@@ -33,14 +33,12 @@ public class LoginView extends JDialog {
             }
         });
 
-        // Evento para abrir el dialogo de cambio de contraseña
         btnCambiarContrasena.addActionListener(e -> {
             if (controller != null) {
                 controller.solicitarCambioContrasena();
             }
         });
 
-        // call onCancel()
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -48,7 +46,6 @@ public class LoginView extends JDialog {
             }
         });
 
-        // call onCancel()
         logPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();

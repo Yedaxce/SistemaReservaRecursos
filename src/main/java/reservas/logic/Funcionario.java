@@ -16,7 +16,6 @@ public class Funcionario extends Usuario {
 
     public Funcionario(String id, String clave, String nombre, String telefono) {
         super(id, clave, Rol.FUNCIONARIO);
-        //validacion
         if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("Nombre del funcionario vacío");
         }
@@ -33,7 +32,6 @@ public class Funcionario extends Usuario {
     }
 
     public void setNombre(String nombre) {
-        //validacion
         if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("Nombre del funcionario vacío");
         }

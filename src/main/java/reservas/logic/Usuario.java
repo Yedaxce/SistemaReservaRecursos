@@ -46,8 +46,6 @@ public abstract class Usuario {
 
     public Rol getRol() {
         if (this.rol == null) {
-            // Si por alguna razón el rol está nulo al leer el XML,
-            // determina el rol según la instancia real de la clase
             if (this instanceof Administrador) {
                 this.rol = Rol.ADMIN;
             } else if (this instanceof Funcionario) {
@@ -72,7 +70,6 @@ public abstract class Usuario {
         return clave.equals(claveIngresada);
     }
 
-    // Dos usuarios son "el mismo" si tienen el mismo id
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

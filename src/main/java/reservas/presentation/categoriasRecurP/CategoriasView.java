@@ -130,18 +130,10 @@ public class CategoriasView implements PropertyChangeListener {
                     idCatFld.setText("");
                     descripcionCatFld.setText("");
                     tablaCategorias.clearSelection();
-
-                    idCatFld.setEnabled(true);
-                    idCatFld.setEditable(true);
                 } else {
                     idCatFld.setText(c.getId());
                     descripcionCatFld.setText(c.getDescripcion());
-
-                    // El ID NO es editable para proteger la llave primaria
-                    idCatFld.setEnabled(false);
-                    idCatFld.setEditable(false);
                 }
-
                 descripcionCatFld.setEnabled(true);
                 descripcionCatFld.setEditable(true);
                 break;

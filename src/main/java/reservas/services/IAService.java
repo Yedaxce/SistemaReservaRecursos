@@ -22,7 +22,7 @@ public class IAService {
     }
 
     public DatosReservaDTO extraerDatosReserva(String frase) {
-        // 1. Intentar extracción con la API de Gemini
+        // 1. Intentar extraccion con la API de Gemini
         try {
             DatosReservaDTO dto = consultarLLM(frase);
             if (dto != null) {
@@ -114,7 +114,7 @@ public class IAService {
                 horaFin = LocalTime.parse(normalizarHora(finMatcher.group(1)));
             }
 
-            // Selección de categorías mediante el análisis léxico local sobre el texto original
+            // Seleccion de categorias mediante el analisis lexico local sobre el texto original
             List<String> categorias = extraerCategoriasLocales(fraseOriginal);
 
             return new DatosReservaDTO(actividad, fecha, horaInicio, horaFin, categorias);
@@ -169,7 +169,7 @@ public class IAService {
         LocalTime inicio = LocalTime.of(8, 0);
         LocalTime fin = LocalTime.of(10, 0);
 
-        // 1. Eliminamos fechas ("18 de noviembre") para no confundir días con horas (18 -> 18:00)
+        // 1. Eliminamos fechas("18 de noviembre") para no confundir días con horas (18 -> 18:00)
         String textoSinFechas = texto.replaceAll("\\b\\d{1,2}\\s+de\\s+[a-z]+\\b", "");
 
         // 2. Buscar patrón de rango explícito ("8am a 10am", "8 a 10", "8:00 a 10:00")

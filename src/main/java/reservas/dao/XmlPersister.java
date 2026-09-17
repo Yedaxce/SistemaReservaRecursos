@@ -22,7 +22,6 @@ public class XmlPersister {
         return theInstance;
     }
 
-    /** SOLO para pruebas: vuelve a que instance() cree el default ("datos.xml") la próxima vez. */
     public static synchronized void resetInstance() {
         theInstance = null;
     }
